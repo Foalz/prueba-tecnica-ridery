@@ -17,7 +17,9 @@
     'data': [
         'security/res_groups.xml',
         'security/ir.model.access.csv',
-        
+
+        'data/sequence.xml',
+
         'views/ridery_trips.xml',
         'views/res_partner.xml',
         'views/menu.xml',

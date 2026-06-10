@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from odoo import fields, api, models, _
 
+
 class RideryTrips(models.Model):
     _name = 'ridery.trips'
     _description = 'Modelo dedicado a almacenar todos los viajes de la aplicación'
@@ -12,7 +13,10 @@ class RideryTrips(models.Model):
     name = fields.Char(
         string="Correlativo",
         required=True,
-        index=True
+        copy=False,
+        readonly=True,
+        index=True,
+        default=lambda self: _('Nuevo'),
     )
     company_id = fields.Many2one(
         string="Compañía",
@@ -68,3 +72,10 @@ class RideryTrips(models.Model):
         currency_field='currency_id',
         tracking=True,
     )
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            if vals.get('name', _('Nuevo')) == _('Nuevo'):
+                vals['name'] = self.env['ir.sequence'].next_by_code('ridery.trips') or _('Nuevo')
+        return super().create(vals_list)

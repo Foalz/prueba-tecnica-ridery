@@ -13,28 +13,45 @@
 
 ---
 
+## ⚠️ Troubleshooting (Usuarios de Windows)
+
+Si al ejecutar el `docker compose up` el contenedor de Odoo falla, se reinicia constantemente, o los logs muestran un error similar a:
+`exec /custom-entrypoint.sh: no such file or directory` o `\r command not found`
+
+**Causa:** Esto es un problema común de compatibilidad de Git en Windows. Al clonar el repositorio, la configuración `autocrlf` de Git para Windows convierte automáticamente los saltos de línea de Linux (LF) a Windows (CRLF), corrompiendo el script ejecutable `.sh` que usa el contenedor.
+
+**Solución rápida:**
+1. Abre tu terminal (Git Bash o PowerShell) y desactiva esta conversión automática con el siguiente comando:
+   ```bash
+   git config --global core.autocrlf false
+   ```
+2. Elimina la carpeta del proyecto clonado.
+3. Vuelve a clonar el repositorio y levanta Docker nuevamente. Los archivos se descargarán con el formato LF nativo y el contenedor arrancará sin problemas.
+
+---
+
 ## 🚀 Guía de Instalación y Ejecución
 
-El proyecto está configurado para levantarse con un solo comando. Sigue estos pasos:
+El proyecto está configurado para levantarse rápidamente con Docker. Sigue estos pasos:
 
 1. Clona el repositorio y ubícate en la raíz del proyecto.
-2. Levanta los contenedores en segundo plano usando Docker Compose:
-   ```bash
-   docker compose up -d --build
-   ```
-3. Asegúrate de crear el archivo `.env` con la configuración necesaria expuesta en el archivo `.env.example`.
+2. Asegúrate de crear el archivo `.env` basándote en la configuración expuesta en el archivo `.env.example`.
    > Ejemplo de archivo `.env`:
    ```env
    DB_NAME=odoo
    DB_USER=odoo
    DB_PASSWORD=abc123
    ```
+3. Levanta los contenedores en segundo plano usando Docker Compose:
+   ```bash
+   docker compose up -d --build
+   ```
 4. Espera un par de minutos a que Odoo instale los módulos y configure la base de datos por primera vez.
 5. Ingresa a [http://localhost:8069](http://localhost:8069) e inicia sesión con el usuario `admin` y contraseña `admin`. El contenedor levanta la instancia de Odoo con las credenciales de prueba por defecto y data de demostración para facilitar la evaluación.
 6. Al iniciar la base de datos, Docker instalará los módulos: **Ridery** y la extensión de la **Localización Venezolana**.
 7. Es necesario ingresar a **Ajustes -> Facturación -> Paquete de Localización** y seleccionar la localización contable venezolana para asegurar de que los diarios y los planes de cuenta se instalen dentro del sistema y que la moneda sea la correcta.
-
    ![Configuración de Localización Venezolana](assets/config.png)
+
 ---
 
 ## 🖥️ Acceso a Odoo
@@ -46,15 +63,21 @@ El proyecto está configurado para levantarse con un solo comando. Sigue estos p
 ### ¿Dónde ver los viajes?
 1. Inicia sesión en Odoo.
 2. Abre la aplicación **Ridery Trips** en el menú principal.
-3. Podrás ver el listado de viajes registrados, con su conductor, pasajero, facturación. Todo esto en una vista Kanban.
+3. Podrás ver el listado de viajes registrados, con su conductor, pasajero y facturación. Todo esto en una vista Kanban.
    ![Viajes registrados](assets/ridery_module.png)
-4. Desde la vista form se pueden visualizar mayor lujo de detalles y editar los viajes que no hayan sido finalizados.
-**Nota importante:** Existe un cron en Odoo que se ejecuta cada 5 minutos para facturar todos los viajes pendientes, aunque se encuentra disponible la opción de facturar manualmente a través del botón solicitado.
+4. Desde la vista form se pueden visualizar con mayor lujo de detalles y editar los viajes que no hayan sido finalizados.
+   ![Viajes registrados](assets/ridery_module_detail.png)
+5. Desde el contacto es posible ver cuántas carreras y cuantos viajes ha realizado dependiendo si se trata de un pasajero o un conductor.
+   ![Viajes registrados](assets/ridery_passenger.png)
+   ![Viajes registrados](assets/ridery_driver.png)
+
+**Nota importante:** Existe un cron en Odoo que se ejecuta cada 20 minutos para facturar todos los viajes pendientes, aunque se encuentra disponible la opción de facturar manualmente a través del botón solicitado.
+
 ---
 
 ## 🔌 Uso de la API de Node.js (Sincronización)
 
-La API de Node.js corre en el puerto **3000**. Su función es leer los viajes locales (almacenados en `src/data/trips.json`) y sincronizarlos con Odoo. 
+La API de Node.js corre en el puerto **3000**. Su función es leer los viajes locales (almacenados en `src/data/trips.json`) y sincronizarlos con Odoo.
 
 Puedes usar Postman o cURL para interactuar con estos endpoints:
 
@@ -62,7 +85,7 @@ Puedes usar Postman o cURL para interactuar con estos endpoints:
 Lee los viajes pendientes y los envía a Odoo creando la facturación automática.
 - **URL:** `http://localhost:3000/api/v1/trips`
 - **Método:** `POST`
-- **Respuesta Esperada:** 
+- **Respuesta Esperada:**
   ```json
   {
       "ok": true,
@@ -94,6 +117,7 @@ Restablece el archivo `trips.json` a su estado original (borrando las marcas de 
 ---
 
 ## 👨‍💻 Notas Técnicas sobre la Implementación
+
 - Se configuró la **Moneda VES (Bolívares)** por defecto para la compañía usando archivos XML.
 - La comunicación desde Node hacia Odoo usa los controladores web de Odoo (`http.route` con validación mediante API-KEY estática por cabeceras).
 - Manejo de Errores: La API procesa transacciones de manera segura, marcando en el archivo JSON cualquier `sync_error` si el viaje falla por validaciones del lado del ERP.

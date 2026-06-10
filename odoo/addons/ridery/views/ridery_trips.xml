@@ -14,7 +14,7 @@
                     <field name="name"/>
                     <field name="partner_id" string="Pasajero"/>
                     <field name="driver_partner_id" string="Conductor"/>
-                    <field name="city" optional="show"/>
+                    <field name="end_datetime" optional="show"/>
                     <field name="distance" sum="Total Distancia"/>
                     <field name="price" sum="Total Ingresos"/>
                     <field name="state" widget="badge"
@@ -47,7 +47,7 @@
                         </div>
                         <group>
                             <group string="Detalles del Viaje">
-                                <field name="city"/>
+
                                 <field name="distance"/>
                                 <field name="price"/>
                                 <field name="currency_id" invisible="1"/>

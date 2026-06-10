@@ -75,10 +75,6 @@ class RideryTrips(models.Model):
     )
 
     # ── Viaje ─────────────────────────────────────────────────────────────────
-    city = fields.Char(
-        string='Ciudad',
-        help="Ciudad donde se realizó el viaje",
-    )
     stop_ids = fields.One2many(
         comodel_name='ridery.trip.stop',
         inverse_name='trip_id',
@@ -191,7 +187,7 @@ class RideryTrips(models.Model):
                 'invoice_origin': trip.name,
                 'invoice_line_ids': [(0, 0, {
                     'product_id': product.id,
-                    'name': f'Servicio de Transporte Ridery - {trip.fleet_category_id.name or "Estándar"} - {trip.city or "Sin Ciudad"}',
+                    'name': f'Servicio de Transporte Ridery - {trip.fleet_category_id.name or "Estándar"}',
                     'quantity': 1.0,
                     'price_unit': trip.price,
                 })],

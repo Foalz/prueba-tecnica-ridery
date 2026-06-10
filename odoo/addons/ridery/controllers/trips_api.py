@@ -159,7 +159,7 @@ def _validate_trip(env, trip_data):
         'distance':          distance,
         'price':             price,
         'state':             state,
-        'city':              trip_data.get('city'),
+
         'start_address':     trip_data.get('start_address'),
         'end_address':       trip_data.get('end_address'),
     }
@@ -201,18 +201,6 @@ class RideryTripsApiController(http.Controller):
             X-API-Key: debe coincidir con ridery.api_key
 
         Ejemplo de body:
-            [
-              {
-                "passenger_vat": "V-12345678",
-                "driver_vat":    "V-87654321",
-                "distance":      8.4,
-                "price":         15.50,
-                "state":         "confirmed",
-                "start_address": "Av. Principal...",
-                "end_address":   "Calle 1...",
-                "city":          "Caracas"
-              }
-            ]
         """
         env = request.env
 

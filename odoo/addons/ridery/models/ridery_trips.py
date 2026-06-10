@@ -99,14 +99,13 @@ class RideryTrips(models.Model):
     )
     state = fields.Selection(
         selection=[
-            ('draft', 'Borrador'),
-            ('confirmed', 'Confirmado'),
             ('in_progress', 'En Progreso'),
+            ('done', 'Finalizado'),
             ('cancelled', 'Cancelado'),
         ],
         string='Estado',
         tracking=True,
-        default='draft',
+        default='in_progress',
     )
     price = fields.Monetary(
         string='Total de la Carrera',
@@ -201,7 +200,7 @@ class RideryTrips(models.Model):
         """Cron job para facturar por lotes viajes en progreso o confirmados que no tengan factura"""
         trips_to_invoice = self.search([
             ('move_id', '=', False),
-            ('state', 'in', ['confirmed', 'in_progress'])
+            ('state', 'in', ['in_progress', 'done'])
         ], limit=100) # Lote de 100 para no agotar la memoria
         
         if trips_to_invoice:

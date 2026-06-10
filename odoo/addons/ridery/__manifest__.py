@@ -19,6 +19,7 @@
         'security/ir.model.access.csv',
         
         'views/ridery_trips.xml',
+        'views/res_partner.xml',
         'views/menu.xml',
     ],
     'installable': True,

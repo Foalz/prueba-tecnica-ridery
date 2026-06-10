@@ -1,70 +1,83 @@
-<?xml version="1.0" encoding="utf-8"?>\n<odoo><data noupdate="1">\n
+<?xml version="1.0" encoding="utf-8"?>
+<odoo><data noupdate="1">
+
     <record id="demo_passenger_0" model="res.partner">
         <field name="name">María Perez</field>
         <field name="vat">V-11111111</field>
         <field name="email">maria@demo.ridery</field>
         <field name="phone">+58 412 111 1111</field>
-    </record>\n
+    </record>
+
     <record id="demo_passenger_1" model="res.partner">
         <field name="name">Juan Gonzalez</field>
         <field name="vat">V-22222222</field>
         <field name="email">juan@demo.ridery</field>
         <field name="phone">+58 414 222 2222</field>
-    </record>\n
+    </record>
+
     <record id="demo_passenger_2" model="res.partner">
         <field name="name">Luis Rodriguez</field>
         <field name="vat">V-33333333</field>
         <field name="email">luis@demo.ridery</field>
         <field name="phone">+58 416 333 3333</field>
-    </record>\n
+    </record>
+
     <record id="demo_passenger_3" model="res.partner">
         <field name="name">Ana Martinez</field>
         <field name="vat">V-44444444</field>
         <field name="email">ana@demo.ridery</field>
         <field name="phone">+58 424 444 4444</field>
-    </record>\n
+    </record>
+
     <record id="demo_passenger_4" model="res.partner">
         <field name="name">Carlos Lopez</field>
         <field name="vat">V-55555555</field>
         <field name="email">carlos@demo.ridery</field>
         <field name="phone">+58 412 555 5555</field>
-    </record>\n
+    </record>
+
     <record id="demo_passenger_5" model="res.partner">
         <field name="name">Sofía Fernandez</field>
         <field name="vat">V-66666666</field>
         <field name="email">sofia@demo.ridery</field>
         <field name="phone">+58 414 666 6666</field>
-    </record>\n
+    </record>
+
     <record id="demo_driver_0" model="res.partner">
         <field name="name">Pedro Driver (Corolla)</field>
         <field name="vat">V-87654321</field>
         <field name="email">pedro@demo.ridery</field>
         <field name="phone">+58 424 777 8899</field>
-    </record>\n
+    </record>
+
     <record id="demo_driver_1" model="res.partner">
         <field name="name">Jose Driver (Optra)</field>
         <field name="vat">V-98765432</field>
         <field name="email">jose@demo.ridery</field>
         <field name="phone">+58 416 999 0011</field>
-    </record>\n
+    </record>
+
     <record id="demo_driver_2" model="res.partner">
         <field name="name">Miguel Driver (Yaris)</field>
         <field name="vat">V-12312312</field>
         <field name="email">miguel@demo.ridery</field>
         <field name="phone">+58 412 123 1234</field>
-    </record>\n
+    </record>
+
     <record id="demo_driver_3" model="res.partner">
         <field name="name">Roberto Driver (Spark)</field>
         <field name="vat">V-32132132</field>
         <field name="email">roberto@demo.ridery</field>
         <field name="phone">+58 414 321 4321</field>
-    </record>\n
+    </record>
+
     <record id="demo_driver_4" model="res.partner">
         <field name="name">Jesus Driver (Civic)</field>
         <field name="vat">V-45645645</field>
         <field name="email">jesus@demo.ridery</field>
         <field name="phone">+58 424 456 6543</field>
-    </record>\n
+    </record>
+
     <record id="demo_brand_toyota" model="fleet.vehicle.model.brand"><field name="name">Toyota</field></record>
     <record id="demo_brand_chev" model="fleet.vehicle.model.brand"><field name="name">Chevrolet</field></record>
     <record id="demo_brand_honda" model="fleet.vehicle.model.brand"><field name="name">Honda</field></record>
@@ -74,32 +87,38 @@
     <record id="demo_model_optra" model="fleet.vehicle.model"><field name="name">Optra</field><field name="brand_id" ref="demo_brand_chev"/></record>
     <record id="demo_model_spark" model="fleet.vehicle.model"><field name="name">Spark</field><field name="brand_id" ref="demo_brand_chev"/></record>
     <record id="demo_model_civic" model="fleet.vehicle.model"><field name="name">Civic</field><field name="brand_id" ref="demo_brand_honda"/></record>
-\n
+
+
     <record id="demo_vehicle_0" model="fleet.vehicle">
         <field name="model_id" ref="demo_model_corolla"/>
         <field name="license_plate">ABC-123</field>
         <field name="driver_id" ref="demo_driver_0"/>
-    </record>\n
+    </record>
+
     <record id="demo_vehicle_1" model="fleet.vehicle">
         <field name="model_id" ref="demo_model_optra"/>
         <field name="license_plate">XYZ-987</field>
         <field name="driver_id" ref="demo_driver_1"/>
-    </record>\n
+    </record>
+
     <record id="demo_vehicle_2" model="fleet.vehicle">
         <field name="model_id" ref="demo_model_yaris"/>
         <field name="license_plate">YAR-111</field>
         <field name="driver_id" ref="demo_driver_2"/>
-    </record>\n
+    </record>
+
     <record id="demo_vehicle_3" model="fleet.vehicle">
         <field name="model_id" ref="demo_model_spark"/>
         <field name="license_plate">SPK-222</field>
         <field name="driver_id" ref="demo_driver_3"/>
-    </record>\n
+    </record>
+
     <record id="demo_vehicle_4" model="fleet.vehicle">
         <field name="model_id" ref="demo_model_civic"/>
         <field name="license_plate">CIV-333</field>
         <field name="driver_id" ref="demo_driver_4"/>
-    </record>\n
+    </record>
+
     <record id="demo_trip_0" model="ridery.trips">
         <field name="partner_id" ref="demo_passenger_5"/>
         <field name="driver_partner_id" ref="demo_driver_0"/>
@@ -110,7 +129,8 @@
         (0, 0, {'name': 'C.C. Sambil', 'stop_type': 'start', 'latitude': 10.4855, 'longitude': -66.857, 'sequence': 1}),
         (0, 0, {'name': 'Centro Lido', 'stop_type': 'end', 'latitude': 10.488, 'longitude': -66.855, 'sequence': 2}),
     ]"/>
-    </record>\n
+    </record>
+
     <record id="demo_trip_1" model="ridery.trips">
         <field name="partner_id" ref="demo_passenger_5"/>
         <field name="driver_partner_id" ref="demo_driver_0"/>
@@ -121,7 +141,8 @@
         (0, 0, {'name': 'Bello Monte', 'stop_type': 'start', 'latitude': 10.48, 'longitude': -66.88, 'sequence': 1}),
         (0, 0, {'name': 'La Castellana', 'stop_type': 'end', 'latitude': 10.5, 'longitude': -66.85, 'sequence': 2}),
     ]"/>
-    </record>\n
+    </record>
+
     <record id="demo_trip_2" model="ridery.trips">
         <field name="partner_id" ref="demo_passenger_0"/>
         <field name="driver_partner_id" ref="demo_driver_0"/>
@@ -134,7 +155,8 @@
         (0, 0, {'name': 'C.C. Sambil', 'stop_type': 'intermediate', 'latitude': 10.4855, 'longitude': -66.857, 'sequence': 3}),
         (0, 0, {'name': 'El Hatillo', 'stop_type': 'end', 'latitude': 10.428, 'longitude': -66.822, 'sequence': 4}),
     ]"/>
-    </record>\n
+    </record>
+
     <record id="demo_trip_3" model="ridery.trips">
         <field name="partner_id" ref="demo_passenger_5"/>
         <field name="driver_partner_id" ref="demo_driver_4"/>
@@ -147,7 +169,8 @@
         (0, 0, {'name': 'Centro Lido', 'stop_type': 'intermediate', 'latitude': 10.488, 'longitude': -66.855, 'sequence': 3}),
         (0, 0, {'name': 'El Hatillo', 'stop_type': 'end', 'latitude': 10.428, 'longitude': -66.822, 'sequence': 4}),
     ]"/>
-    </record>\n
+    </record>
+
     <record id="demo_trip_4" model="ridery.trips">
         <field name="partner_id" ref="demo_passenger_3"/>
         <field name="driver_partner_id" ref="demo_driver_2"/>
@@ -159,7 +182,8 @@
         (0, 0, {'name': 'Bello Monte', 'stop_type': 'intermediate', 'latitude': 10.48, 'longitude': -66.88, 'sequence': 2}),
         (0, 0, {'name': 'La Castellana', 'stop_type': 'end', 'latitude': 10.5, 'longitude': -66.85, 'sequence': 3}),
     ]"/>
-    </record>\n
+    </record>
+
     <record id="demo_trip_5" model="ridery.trips">
         <field name="partner_id" ref="demo_passenger_0"/>
         <field name="driver_partner_id" ref="demo_driver_2"/>
@@ -171,7 +195,8 @@
         (0, 0, {'name': 'Los Palos Grandes', 'stop_type': 'intermediate', 'latitude': 10.501, 'longitude': -66.84, 'sequence': 2}),
         (0, 0, {'name': 'C.C. San Ignacio', 'stop_type': 'end', 'latitude': 10.492, 'longitude': -66.852, 'sequence': 3}),
     ]"/>
-    </record>\n
+    </record>
+
     <record id="demo_trip_6" model="ridery.trips">
         <field name="partner_id" ref="demo_passenger_3"/>
         <field name="driver_partner_id" ref="demo_driver_0"/>
@@ -183,7 +208,8 @@
         (0, 0, {'name': 'C.C. Sambil', 'stop_type': 'intermediate', 'latitude': 10.4855, 'longitude': -66.857, 'sequence': 2}),
         (0, 0, {'name': 'C.C. San Ignacio', 'stop_type': 'end', 'latitude': 10.492, 'longitude': -66.852, 'sequence': 3}),
     ]"/>
-    </record>\n
+    </record>
+
     <record id="demo_trip_7" model="ridery.trips">
         <field name="partner_id" ref="demo_passenger_0"/>
         <field name="driver_partner_id" ref="demo_driver_1"/>
@@ -194,7 +220,8 @@
         (0, 0, {'name': 'C.C. San Ignacio', 'stop_type': 'start', 'latitude': 10.492, 'longitude': -66.852, 'sequence': 1}),
         (0, 0, {'name': 'La Castellana', 'stop_type': 'end', 'latitude': 10.5, 'longitude': -66.85, 'sequence': 2}),
     ]"/>
-    </record>\n
+    </record>
+
     <record id="demo_trip_8" model="ridery.trips">
         <field name="partner_id" ref="demo_passenger_2"/>
         <field name="driver_partner_id" ref="demo_driver_3"/>
@@ -205,7 +232,8 @@
         (0, 0, {'name': 'El Hatillo', 'stop_type': 'start', 'latitude': 10.428, 'longitude': -66.822, 'sequence': 1}),
         (0, 0, {'name': 'Bello Monte', 'stop_type': 'end', 'latitude': 10.48, 'longitude': -66.88, 'sequence': 2}),
     ]"/>
-    </record>\n
+    </record>
+
     <record id="demo_trip_9" model="ridery.trips">
         <field name="partner_id" ref="demo_passenger_1"/>
         <field name="driver_partner_id" ref="demo_driver_2"/>
@@ -218,7 +246,8 @@
         (0, 0, {'name': 'C.C. Sambil', 'stop_type': 'intermediate', 'latitude': 10.4855, 'longitude': -66.857, 'sequence': 3}),
         (0, 0, {'name': 'C.C. San Ignacio', 'stop_type': 'end', 'latitude': 10.492, 'longitude': -66.852, 'sequence': 4}),
     ]"/>
-    </record>\n
+    </record>
+
     <record id="demo_trip_10" model="ridery.trips">
         <field name="partner_id" ref="demo_passenger_3"/>
         <field name="driver_partner_id" ref="demo_driver_3"/>
@@ -229,7 +258,8 @@
         (0, 0, {'name': 'El Hatillo', 'stop_type': 'start', 'latitude': 10.428, 'longitude': -66.822, 'sequence': 1}),
         (0, 0, {'name': 'Plaza Altamira', 'stop_type': 'end', 'latitude': 10.4965, 'longitude': -66.8488, 'sequence': 2}),
     ]"/>
-    </record>\n
+    </record>
+
     <record id="demo_trip_11" model="ridery.trips">
         <field name="partner_id" ref="demo_passenger_1"/>
         <field name="driver_partner_id" ref="demo_driver_0"/>
@@ -241,7 +271,8 @@
         (0, 0, {'name': 'C.C. Sambil', 'stop_type': 'intermediate', 'latitude': 10.4855, 'longitude': -66.857, 'sequence': 2}),
         (0, 0, {'name': 'El Hatillo', 'stop_type': 'end', 'latitude': 10.428, 'longitude': -66.822, 'sequence': 3}),
     ]"/>
-    </record>\n
+    </record>
+
     <record id="demo_trip_12" model="ridery.trips">
         <field name="partner_id" ref="demo_passenger_1"/>
         <field name="driver_partner_id" ref="demo_driver_3"/>
@@ -252,7 +283,8 @@
         (0, 0, {'name': 'Las Mercedes', 'stop_type': 'start', 'latitude': 10.48, 'longitude': -66.865, 'sequence': 1}),
         (0, 0, {'name': 'Centro Lido', 'stop_type': 'end', 'latitude': 10.488, 'longitude': -66.855, 'sequence': 2}),
     ]"/>
-    </record>\n
+    </record>
+
     <record id="demo_trip_13" model="ridery.trips">
         <field name="partner_id" ref="demo_passenger_1"/>
         <field name="driver_partner_id" ref="demo_driver_4"/>
@@ -264,7 +296,8 @@
         (0, 0, {'name': 'La Castellana', 'stop_type': 'intermediate', 'latitude': 10.5, 'longitude': -66.85, 'sequence': 2}),
         (0, 0, {'name': 'El Hatillo', 'stop_type': 'end', 'latitude': 10.428, 'longitude': -66.822, 'sequence': 3}),
     ]"/>
-    </record>\n
+    </record>
+
     <record id="demo_trip_14" model="ridery.trips">
         <field name="partner_id" ref="demo_passenger_1"/>
         <field name="driver_partner_id" ref="demo_driver_1"/>
@@ -275,7 +308,8 @@
         (0, 0, {'name': 'C.C. San Ignacio', 'stop_type': 'start', 'latitude': 10.492, 'longitude': -66.852, 'sequence': 1}),
         (0, 0, {'name': 'Centro Lido', 'stop_type': 'end', 'latitude': 10.488, 'longitude': -66.855, 'sequence': 2}),
     ]"/>
-    </record>\n
+    </record>
+
     <record id="demo_trip_15" model="ridery.trips">
         <field name="partner_id" ref="demo_passenger_5"/>
         <field name="driver_partner_id" ref="demo_driver_1"/>
@@ -288,7 +322,8 @@
         (0, 0, {'name': 'Chacao', 'stop_type': 'intermediate', 'latitude': 10.49, 'longitude': -66.85, 'sequence': 3}),
         (0, 0, {'name': 'Las Mercedes', 'stop_type': 'end', 'latitude': 10.48, 'longitude': -66.865, 'sequence': 4}),
     ]"/>
-    </record>\n
+    </record>
+
     <record id="demo_trip_16" model="ridery.trips">
         <field name="partner_id" ref="demo_passenger_3"/>
         <field name="driver_partner_id" ref="demo_driver_4"/>
@@ -299,7 +334,8 @@
         (0, 0, {'name': 'C.C. San Ignacio', 'stop_type': 'start', 'latitude': 10.492, 'longitude': -66.852, 'sequence': 1}),
         (0, 0, {'name': 'Chacao', 'stop_type': 'end', 'latitude': 10.49, 'longitude': -66.85, 'sequence': 2}),
     ]"/>
-    </record>\n
+    </record>
+
     <record id="demo_trip_17" model="ridery.trips">
         <field name="partner_id" ref="demo_passenger_2"/>
         <field name="driver_partner_id" ref="demo_driver_2"/>
@@ -310,7 +346,8 @@
         (0, 0, {'name': 'Los Palos Grandes', 'stop_type': 'start', 'latitude': 10.501, 'longitude': -66.84, 'sequence': 1}),
         (0, 0, {'name': 'Plaza Altamira', 'stop_type': 'end', 'latitude': 10.4965, 'longitude': -66.8488, 'sequence': 2}),
     ]"/>
-    </record>\n
+    </record>
+
     <record id="demo_trip_18" model="ridery.trips">
         <field name="partner_id" ref="demo_passenger_5"/>
         <field name="driver_partner_id" ref="demo_driver_2"/>
@@ -323,7 +360,8 @@
         (0, 0, {'name': 'C.C. Sambil', 'stop_type': 'intermediate', 'latitude': 10.4855, 'longitude': -66.857, 'sequence': 3}),
         (0, 0, {'name': 'Bello Monte', 'stop_type': 'end', 'latitude': 10.48, 'longitude': -66.88, 'sequence': 4}),
     ]"/>
-    </record>\n
+    </record>
+
     <record id="demo_trip_19" model="ridery.trips">
         <field name="partner_id" ref="demo_passenger_2"/>
         <field name="driver_partner_id" ref="demo_driver_1"/>
@@ -334,7 +372,8 @@
         (0, 0, {'name': 'Bello Monte', 'stop_type': 'start', 'latitude': 10.48, 'longitude': -66.88, 'sequence': 1}),
         (0, 0, {'name': 'El Hatillo', 'stop_type': 'end', 'latitude': 10.428, 'longitude': -66.822, 'sequence': 2}),
     ]"/>
-    </record>\n
+    </record>
+
     <record id="demo_trip_20" model="ridery.trips">
         <field name="partner_id" ref="demo_passenger_3"/>
         <field name="driver_partner_id" ref="demo_driver_0"/>
@@ -346,7 +385,8 @@
         (0, 0, {'name': 'Plaza Altamira', 'stop_type': 'intermediate', 'latitude': 10.4965, 'longitude': -66.8488, 'sequence': 2}),
         (0, 0, {'name': 'Bello Monte', 'stop_type': 'end', 'latitude': 10.48, 'longitude': -66.88, 'sequence': 3}),
     ]"/>
-    </record>\n
+    </record>
+
     <record id="demo_trip_21" model="ridery.trips">
         <field name="partner_id" ref="demo_passenger_4"/>
         <field name="driver_partner_id" ref="demo_driver_0"/>
@@ -357,7 +397,8 @@
         (0, 0, {'name': 'Chacao', 'stop_type': 'start', 'latitude': 10.49, 'longitude': -66.85, 'sequence': 1}),
         (0, 0, {'name': 'Centro Lido', 'stop_type': 'end', 'latitude': 10.488, 'longitude': -66.855, 'sequence': 2}),
     ]"/>
-    </record>\n
+    </record>
+
     <record id="demo_trip_22" model="ridery.trips">
         <field name="partner_id" ref="demo_passenger_1"/>
         <field name="driver_partner_id" ref="demo_driver_3"/>
@@ -369,7 +410,8 @@
         (0, 0, {'name': 'La Castellana', 'stop_type': 'intermediate', 'latitude': 10.5, 'longitude': -66.85, 'sequence': 2}),
         (0, 0, {'name': 'C.C. Sambil', 'stop_type': 'end', 'latitude': 10.4855, 'longitude': -66.857, 'sequence': 3}),
     ]"/>
-    </record>\n
+    </record>
+
     <record id="demo_trip_23" model="ridery.trips">
         <field name="partner_id" ref="demo_passenger_4"/>
         <field name="driver_partner_id" ref="demo_driver_1"/>
@@ -382,7 +424,8 @@
         (0, 0, {'name': 'Chacao', 'stop_type': 'intermediate', 'latitude': 10.49, 'longitude': -66.85, 'sequence': 3}),
         (0, 0, {'name': 'Plaza Altamira', 'stop_type': 'end', 'latitude': 10.4965, 'longitude': -66.8488, 'sequence': 4}),
     ]"/>
-    </record>\n
+    </record>
+
     <record id="demo_trip_24" model="ridery.trips">
         <field name="partner_id" ref="demo_passenger_1"/>
         <field name="driver_partner_id" ref="demo_driver_1"/>
@@ -395,4 +438,5 @@
         (0, 0, {'name': 'Bello Monte', 'stop_type': 'intermediate', 'latitude': 10.48, 'longitude': -66.88, 'sequence': 3}),
         (0, 0, {'name': 'Plaza Altamira', 'stop_type': 'end', 'latitude': 10.4965, 'longitude': -66.8488, 'sequence': 4}),
     ]"/>
-    </record>\n</data></odoo>
+    </record>
+</data></odoo>

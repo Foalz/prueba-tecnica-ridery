@@ -8,7 +8,7 @@
         
         <!-- Asignar RIF al contacto de la compañía para pasar la validación -->
         <record id="base.main_partner" model="res.partner">
-            <field name="vat">J-12345678-9</field>
+            <field name="vat">J-123456789</field>
         </record>
         
         <!-- Forzar a la Compañía Principal a usar Venezuela y VES -->

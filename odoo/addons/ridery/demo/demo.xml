@@ -123,72 +123,55 @@
         <field name="partner_id" ref="demo_passenger_5"/>
         <field name="driver_partner_id" ref="demo_driver_0"/>
         <field name="distance">3.1</field>
-        <field name="price">6.65</field>
+        <field name="price">3170.03</field>
         <field name="state">done</field>
         <field name="stop_ids" eval="[
-        (0, 0, {'name': 'C.C. Sambil', 'stop_type': 'start', 'latitude': 10.4855, 'longitude': -66.857, 'sequence': 1}),
-        (0, 0, {'name': 'Centro Lido', 'stop_type': 'end', 'latitude': 10.488, 'longitude': -66.855, 'sequence': 2}),
+        (0, 0, {'name': 'C.C. San Ignacio', 'stop_type': 'start', 'latitude': 10.492, 'longitude': -66.852, 'sequence': 1}),
+        (0, 0, {'name': 'Chacao', 'stop_type': 'end', 'latitude': 10.49, 'longitude': -66.85, 'sequence': 2}),
     ]"/>
     </record>
 
     <record id="demo_trip_1" model="ridery.trips">
-        <field name="partner_id" ref="demo_passenger_5"/>
-        <field name="driver_partner_id" ref="demo_driver_0"/>
-        <field name="distance">17.7</field>
-        <field name="price">28.55</field>
-        <field name="state">cancelled</field>
+        <field name="partner_id" ref="demo_passenger_0"/>
+        <field name="driver_partner_id" ref="demo_driver_4"/>
+        <field name="distance">12.0</field>
+        <field name="price">6929.8</field>
+        <field name="state">done</field>
         <field name="stop_ids" eval="[
-        (0, 0, {'name': 'Bello Monte', 'stop_type': 'start', 'latitude': 10.48, 'longitude': -66.88, 'sequence': 1}),
-        (0, 0, {'name': 'La Castellana', 'stop_type': 'end', 'latitude': 10.5, 'longitude': -66.85, 'sequence': 2}),
+        (0, 0, {'name': 'Chacao', 'stop_type': 'start', 'latitude': 10.49, 'longitude': -66.85, 'sequence': 1}),
+        (0, 0, {'name': 'Plaza Altamira', 'stop_type': 'end', 'latitude': 10.4965, 'longitude': -66.8488, 'sequence': 2}),
     ]"/>
     </record>
 
     <record id="demo_trip_2" model="ridery.trips">
-        <field name="partner_id" ref="demo_passenger_0"/>
-        <field name="driver_partner_id" ref="demo_driver_0"/>
-        <field name="distance">4.6</field>
-        <field name="price">8.9</field>
+        <field name="partner_id" ref="demo_passenger_4"/>
+        <field name="driver_partner_id" ref="demo_driver_1"/>
+        <field name="distance">18.6</field>
+        <field name="price">10571.32</field>
         <field name="state">done</field>
         <field name="stop_ids" eval="[
-        (0, 0, {'name': 'Bello Monte', 'stop_type': 'start', 'latitude': 10.48, 'longitude': -66.88, 'sequence': 1}),
-        (0, 0, {'name': 'Plaza Altamira', 'stop_type': 'intermediate', 'latitude': 10.4965, 'longitude': -66.8488, 'sequence': 2}),
-        (0, 0, {'name': 'C.C. Sambil', 'stop_type': 'intermediate', 'latitude': 10.4855, 'longitude': -66.857, 'sequence': 3}),
-        (0, 0, {'name': 'El Hatillo', 'stop_type': 'end', 'latitude': 10.428, 'longitude': -66.822, 'sequence': 4}),
+        (0, 0, {'name': 'Los Palos Grandes', 'stop_type': 'start', 'latitude': 10.501, 'longitude': -66.84, 'sequence': 1}),
+        (0, 0, {'name': 'Las Mercedes', 'stop_type': 'end', 'latitude': 10.48, 'longitude': -66.865, 'sequence': 2}),
     ]"/>
     </record>
 
     <record id="demo_trip_3" model="ridery.trips">
-        <field name="partner_id" ref="demo_passenger_5"/>
-        <field name="driver_partner_id" ref="demo_driver_4"/>
-        <field name="distance">11.9</field>
-        <field name="price">19.85</field>
+        <field name="partner_id" ref="demo_passenger_0"/>
+        <field name="driver_partner_id" ref="demo_driver_1"/>
+        <field name="distance">18.2</field>
+        <field name="price">10030.25</field>
         <field name="state">done</field>
         <field name="stop_ids" eval="[
-        (0, 0, {'name': 'Las Mercedes', 'stop_type': 'start', 'latitude': 10.48, 'longitude': -66.865, 'sequence': 1}),
-        (0, 0, {'name': 'Plaza Altamira', 'stop_type': 'intermediate', 'latitude': 10.4965, 'longitude': -66.8488, 'sequence': 2}),
-        (0, 0, {'name': 'Centro Lido', 'stop_type': 'intermediate', 'latitude': 10.488, 'longitude': -66.855, 'sequence': 3}),
-        (0, 0, {'name': 'El Hatillo', 'stop_type': 'end', 'latitude': 10.428, 'longitude': -66.822, 'sequence': 4}),
+        (0, 0, {'name': 'El Hatillo', 'stop_type': 'start', 'latitude': 10.428, 'longitude': -66.822, 'sequence': 1}),
+        (0, 0, {'name': 'C.C. San Ignacio', 'stop_type': 'end', 'latitude': 10.492, 'longitude': -66.852, 'sequence': 2}),
     ]"/>
     </record>
 
     <record id="demo_trip_4" model="ridery.trips">
-        <field name="partner_id" ref="demo_passenger_3"/>
-        <field name="driver_partner_id" ref="demo_driver_2"/>
-        <field name="distance">8.8</field>
-        <field name="price">15.2</field>
-        <field name="state">done</field>
-        <field name="stop_ids" eval="[
-        (0, 0, {'name': 'C.C. San Ignacio', 'stop_type': 'start', 'latitude': 10.492, 'longitude': -66.852, 'sequence': 1}),
-        (0, 0, {'name': 'Bello Monte', 'stop_type': 'intermediate', 'latitude': 10.48, 'longitude': -66.88, 'sequence': 2}),
-        (0, 0, {'name': 'La Castellana', 'stop_type': 'end', 'latitude': 10.5, 'longitude': -66.85, 'sequence': 3}),
-    ]"/>
-    </record>
-
-    <record id="demo_trip_5" model="ridery.trips">
         <field name="partner_id" ref="demo_passenger_0"/>
-        <field name="driver_partner_id" ref="demo_driver_2"/>
-        <field name="distance">21.6</field>
-        <field name="price">34.4</field>
+        <field name="driver_partner_id" ref="demo_driver_3"/>
+        <field name="distance">4.7</field>
+        <field name="price">4462.49</field>
         <field name="state">cancelled</field>
         <field name="stop_ids" eval="[
         (0, 0, {'name': 'Plaza Altamira', 'stop_type': 'start', 'latitude': 10.4965, 'longitude': -66.8488, 'sequence': 1}),
@@ -197,11 +180,11 @@
     ]"/>
     </record>
 
-    <record id="demo_trip_6" model="ridery.trips">
+    <record id="demo_trip_5" model="ridery.trips">
         <field name="partner_id" ref="demo_passenger_3"/>
         <field name="driver_partner_id" ref="demo_driver_0"/>
         <field name="distance">14.9</field>
-        <field name="price">24.35</field>
+        <field name="price">9034.4</field>
         <field name="state">cancelled</field>
         <field name="stop_ids" eval="[
         (0, 0, {'name': 'Bello Monte', 'stop_type': 'start', 'latitude': 10.48, 'longitude': -66.88, 'sequence': 1}),
@@ -210,49 +193,37 @@
     ]"/>
     </record>
 
-    <record id="demo_trip_7" model="ridery.trips">
+    <record id="demo_trip_6" model="ridery.trips">
         <field name="partner_id" ref="demo_passenger_0"/>
         <field name="driver_partner_id" ref="demo_driver_1"/>
         <field name="distance">19.9</field>
-        <field name="price">31.85</field>
-        <field name="state">in_progress</field>
+        <field name="price">11440.22</field>
+        <field name="state">done</field>
+        <field name="stop_ids" eval="[
+        (0, 0, {'name': 'La Castellana', 'stop_type': 'start', 'latitude': 10.5, 'longitude': -66.85, 'sequence': 1}),
+        (0, 0, {'name': 'Las Mercedes', 'stop_type': 'end', 'latitude': 10.48, 'longitude': -66.865, 'sequence': 2}),
+    ]"/>
+    </record>
+
+    <record id="demo_trip_7" model="ridery.trips">
+        <field name="partner_id" ref="demo_passenger_3"/>
+        <field name="driver_partner_id" ref="demo_driver_2"/>
+        <field name="distance">6.2</field>
+        <field name="price">4645.27</field>
+        <field name="state">done</field>
         <field name="stop_ids" eval="[
         (0, 0, {'name': 'C.C. San Ignacio', 'stop_type': 'start', 'latitude': 10.492, 'longitude': -66.852, 'sequence': 1}),
-        (0, 0, {'name': 'La Castellana', 'stop_type': 'end', 'latitude': 10.5, 'longitude': -66.85, 'sequence': 2}),
+        (0, 0, {'name': 'Centro Lido', 'stop_type': 'intermediate', 'latitude': 10.488, 'longitude': -66.855, 'sequence': 2}),
+        (0, 0, {'name': 'C.C. Sambil', 'stop_type': 'intermediate', 'latitude': 10.4855, 'longitude': -66.857, 'sequence': 3}),
+        (0, 0, {'name': 'Bello Monte', 'stop_type': 'end', 'latitude': 10.48, 'longitude': -66.88, 'sequence': 4}),
     ]"/>
     </record>
 
     <record id="demo_trip_8" model="ridery.trips">
-        <field name="partner_id" ref="demo_passenger_2"/>
-        <field name="driver_partner_id" ref="demo_driver_3"/>
-        <field name="distance">16.8</field>
-        <field name="price">27.2</field>
-        <field name="state">done</field>
-        <field name="stop_ids" eval="[
-        (0, 0, {'name': 'El Hatillo', 'stop_type': 'start', 'latitude': 10.428, 'longitude': -66.822, 'sequence': 1}),
-        (0, 0, {'name': 'Bello Monte', 'stop_type': 'end', 'latitude': 10.48, 'longitude': -66.88, 'sequence': 2}),
-    ]"/>
-    </record>
-
-    <record id="demo_trip_9" model="ridery.trips">
-        <field name="partner_id" ref="demo_passenger_1"/>
-        <field name="driver_partner_id" ref="demo_driver_2"/>
-        <field name="distance">18.3</field>
-        <field name="price">29.45</field>
-        <field name="state">in_progress</field>
-        <field name="stop_ids" eval="[
-        (0, 0, {'name': 'Centro Lido', 'stop_type': 'start', 'latitude': 10.488, 'longitude': -66.855, 'sequence': 1}),
-        (0, 0, {'name': 'Chacao', 'stop_type': 'intermediate', 'latitude': 10.49, 'longitude': -66.85, 'sequence': 2}),
-        (0, 0, {'name': 'C.C. Sambil', 'stop_type': 'intermediate', 'latitude': 10.4855, 'longitude': -66.857, 'sequence': 3}),
-        (0, 0, {'name': 'C.C. San Ignacio', 'stop_type': 'end', 'latitude': 10.492, 'longitude': -66.852, 'sequence': 4}),
-    ]"/>
-    </record>
-
-    <record id="demo_trip_10" model="ridery.trips">
         <field name="partner_id" ref="demo_passenger_3"/>
         <field name="driver_partner_id" ref="demo_driver_3"/>
         <field name="distance">8.6</field>
-        <field name="price">14.9</field>
+        <field name="price">6295.39</field>
         <field name="state">cancelled</field>
         <field name="stop_ids" eval="[
         (0, 0, {'name': 'El Hatillo', 'stop_type': 'start', 'latitude': 10.428, 'longitude': -66.822, 'sequence': 1}),
@@ -260,24 +231,23 @@
     ]"/>
     </record>
 
-    <record id="demo_trip_11" model="ridery.trips">
+    <record id="demo_trip_9" model="ridery.trips">
         <field name="partner_id" ref="demo_passenger_1"/>
         <field name="driver_partner_id" ref="demo_driver_0"/>
         <field name="distance">20.6</field>
-        <field name="price">32.9</field>
-        <field name="state">done</field>
+        <field name="price">11171.16</field>
+        <field name="state">in_progress</field>
         <field name="stop_ids" eval="[
-        (0, 0, {'name': 'C.C. San Ignacio', 'stop_type': 'start', 'latitude': 10.492, 'longitude': -66.852, 'sequence': 1}),
-        (0, 0, {'name': 'C.C. Sambil', 'stop_type': 'intermediate', 'latitude': 10.4855, 'longitude': -66.857, 'sequence': 2}),
-        (0, 0, {'name': 'El Hatillo', 'stop_type': 'end', 'latitude': 10.428, 'longitude': -66.822, 'sequence': 3}),
+        (0, 0, {'name': 'Bello Monte', 'stop_type': 'start', 'latitude': 10.48, 'longitude': -66.88, 'sequence': 1}),
+        (0, 0, {'name': 'El Hatillo', 'stop_type': 'end', 'latitude': 10.428, 'longitude': -66.822, 'sequence': 2}),
     ]"/>
     </record>
 
-    <record id="demo_trip_12" model="ridery.trips">
+    <record id="demo_trip_10" model="ridery.trips">
         <field name="partner_id" ref="demo_passenger_1"/>
         <field name="driver_partner_id" ref="demo_driver_3"/>
         <field name="distance">11.4</field>
-        <field name="price">19.1</field>
+        <field name="price">7544.55</field>
         <field name="state">done</field>
         <field name="stop_ids" eval="[
         (0, 0, {'name': 'Las Mercedes', 'stop_type': 'start', 'latitude': 10.48, 'longitude': -66.865, 'sequence': 1}),
@@ -285,113 +255,165 @@
     ]"/>
     </record>
 
-    <record id="demo_trip_13" model="ridery.trips">
+    <record id="demo_trip_11" model="ridery.trips">
         <field name="partner_id" ref="demo_passenger_1"/>
         <field name="driver_partner_id" ref="demo_driver_4"/>
         <field name="distance">14.6</field>
-        <field name="price">23.9</field>
-        <field name="state">cancelled</field>
+        <field name="price">8817.01</field>
+        <field name="state">done</field>
         <field name="stop_ids" eval="[
-        (0, 0, {'name': 'Bello Monte', 'stop_type': 'start', 'latitude': 10.48, 'longitude': -66.88, 'sequence': 1}),
-        (0, 0, {'name': 'La Castellana', 'stop_type': 'intermediate', 'latitude': 10.5, 'longitude': -66.85, 'sequence': 2}),
-        (0, 0, {'name': 'El Hatillo', 'stop_type': 'end', 'latitude': 10.428, 'longitude': -66.822, 'sequence': 3}),
+        (0, 0, {'name': 'La Castellana', 'stop_type': 'start', 'latitude': 10.5, 'longitude': -66.85, 'sequence': 1}),
+        (0, 0, {'name': 'El Hatillo', 'stop_type': 'intermediate', 'latitude': 10.428, 'longitude': -66.822, 'sequence': 2}),
+        (0, 0, {'name': 'C.C. Sambil', 'stop_type': 'intermediate', 'latitude': 10.4855, 'longitude': -66.857, 'sequence': 3}),
+        (0, 0, {'name': 'C.C. San Ignacio', 'stop_type': 'end', 'latitude': 10.492, 'longitude': -66.852, 'sequence': 4}),
+    ]"/>
+    </record>
+
+    <record id="demo_trip_12" model="ridery.trips">
+        <field name="partner_id" ref="demo_passenger_4"/>
+        <field name="driver_partner_id" ref="demo_driver_3"/>
+        <field name="distance">4.5</field>
+        <field name="price">3572.12</field>
+        <field name="state">in_progress</field>
+        <field name="stop_ids" eval="[
+        (0, 0, {'name': 'Centro Lido', 'stop_type': 'start', 'latitude': 10.488, 'longitude': -66.855, 'sequence': 1}),
+        (0, 0, {'name': 'La Castellana', 'stop_type': 'end', 'latitude': 10.5, 'longitude': -66.85, 'sequence': 2}),
+    ]"/>
+    </record>
+
+    <record id="demo_trip_13" model="ridery.trips">
+        <field name="partner_id" ref="demo_passenger_4"/>
+        <field name="driver_partner_id" ref="demo_driver_0"/>
+        <field name="distance">11.2</field>
+        <field name="price">7135.89</field>
+        <field name="state">done</field>
+        <field name="stop_ids" eval="[
+        (0, 0, {'name': 'Las Mercedes', 'stop_type': 'start', 'latitude': 10.48, 'longitude': -66.865, 'sequence': 1}),
+        (0, 0, {'name': 'Chacao', 'stop_type': 'intermediate', 'latitude': 10.49, 'longitude': -66.85, 'sequence': 2}),
+        (0, 0, {'name': 'Plaza Altamira', 'stop_type': 'intermediate', 'latitude': 10.4965, 'longitude': -66.8488, 'sequence': 3}),
+        (0, 0, {'name': 'El Hatillo', 'stop_type': 'end', 'latitude': 10.428, 'longitude': -66.822, 'sequence': 4}),
     ]"/>
     </record>
 
     <record id="demo_trip_14" model="ridery.trips">
-        <field name="partner_id" ref="demo_passenger_1"/>
-        <field name="driver_partner_id" ref="demo_driver_1"/>
-        <field name="distance">14.0</field>
-        <field name="price">23.0</field>
-        <field name="state">in_progress</field>
+        <field name="partner_id" ref="demo_passenger_5"/>
+        <field name="driver_partner_id" ref="demo_driver_0"/>
+        <field name="distance">17.8</field>
+        <field name="price">10046.97</field>
+        <field name="state">done</field>
         <field name="stop_ids" eval="[
-        (0, 0, {'name': 'C.C. San Ignacio', 'stop_type': 'start', 'latitude': 10.492, 'longitude': -66.852, 'sequence': 1}),
-        (0, 0, {'name': 'Centro Lido', 'stop_type': 'end', 'latitude': 10.488, 'longitude': -66.855, 'sequence': 2}),
+        (0, 0, {'name': 'El Hatillo', 'stop_type': 'start', 'latitude': 10.428, 'longitude': -66.822, 'sequence': 1}),
+        (0, 0, {'name': 'C.C. San Ignacio', 'stop_type': 'intermediate', 'latitude': 10.492, 'longitude': -66.852, 'sequence': 2}),
+        (0, 0, {'name': 'Las Mercedes', 'stop_type': 'intermediate', 'latitude': 10.48, 'longitude': -66.865, 'sequence': 3}),
+        (0, 0, {'name': 'C.C. Sambil', 'stop_type': 'end', 'latitude': 10.4855, 'longitude': -66.857, 'sequence': 4}),
     ]"/>
     </record>
 
     <record id="demo_trip_15" model="ridery.trips">
-        <field name="partner_id" ref="demo_passenger_5"/>
-        <field name="driver_partner_id" ref="demo_driver_1"/>
-        <field name="distance">20.3</field>
-        <field name="price">32.45</field>
+        <field name="partner_id" ref="demo_passenger_1"/>
+        <field name="driver_partner_id" ref="demo_driver_3"/>
+        <field name="distance">2.6</field>
+        <field name="price">3392.09</field>
         <field name="state">done</field>
         <field name="stop_ids" eval="[
-        (0, 0, {'name': 'C.C. San Ignacio', 'stop_type': 'start', 'latitude': 10.492, 'longitude': -66.852, 'sequence': 1}),
-        (0, 0, {'name': 'La Castellana', 'stop_type': 'intermediate', 'latitude': 10.5, 'longitude': -66.85, 'sequence': 2}),
-        (0, 0, {'name': 'Chacao', 'stop_type': 'intermediate', 'latitude': 10.49, 'longitude': -66.85, 'sequence': 3}),
-        (0, 0, {'name': 'Las Mercedes', 'stop_type': 'end', 'latitude': 10.48, 'longitude': -66.865, 'sequence': 4}),
+        (0, 0, {'name': 'Centro Lido', 'stop_type': 'start', 'latitude': 10.488, 'longitude': -66.855, 'sequence': 1}),
+        (0, 0, {'name': 'Chacao', 'stop_type': 'intermediate', 'latitude': 10.49, 'longitude': -66.85, 'sequence': 2}),
+        (0, 0, {'name': 'C.C. San Ignacio', 'stop_type': 'intermediate', 'latitude': 10.492, 'longitude': -66.852, 'sequence': 3}),
+        (0, 0, {'name': 'La Castellana', 'stop_type': 'end', 'latitude': 10.5, 'longitude': -66.85, 'sequence': 4}),
     ]"/>
     </record>
 
     <record id="demo_trip_16" model="ridery.trips">
-        <field name="partner_id" ref="demo_passenger_3"/>
-        <field name="driver_partner_id" ref="demo_driver_4"/>
-        <field name="distance">8.2</field>
-        <field name="price">14.3</field>
-        <field name="state">cancelled</field>
+        <field name="partner_id" ref="demo_passenger_5"/>
+        <field name="driver_partner_id" ref="demo_driver_2"/>
+        <field name="distance">21.4</field>
+        <field name="price">11637.66</field>
+        <field name="state">done</field>
         <field name="stop_ids" eval="[
-        (0, 0, {'name': 'C.C. San Ignacio', 'stop_type': 'start', 'latitude': 10.492, 'longitude': -66.852, 'sequence': 1}),
-        (0, 0, {'name': 'Chacao', 'stop_type': 'end', 'latitude': 10.49, 'longitude': -66.85, 'sequence': 2}),
+        (0, 0, {'name': 'El Hatillo', 'stop_type': 'start', 'latitude': 10.428, 'longitude': -66.822, 'sequence': 1}),
+        (0, 0, {'name': 'Centro Lido', 'stop_type': 'end', 'latitude': 10.488, 'longitude': -66.855, 'sequence': 2}),
     ]"/>
     </record>
 
     <record id="demo_trip_17" model="ridery.trips">
-        <field name="partner_id" ref="demo_passenger_2"/>
-        <field name="driver_partner_id" ref="demo_driver_2"/>
-        <field name="distance">5.0</field>
-        <field name="price">9.5</field>
-        <field name="state">done</field>
-        <field name="stop_ids" eval="[
-        (0, 0, {'name': 'Los Palos Grandes', 'stop_type': 'start', 'latitude': 10.501, 'longitude': -66.84, 'sequence': 1}),
-        (0, 0, {'name': 'Plaza Altamira', 'stop_type': 'end', 'latitude': 10.4965, 'longitude': -66.8488, 'sequence': 2}),
-    ]"/>
-    </record>
-
-    <record id="demo_trip_18" model="ridery.trips">
-        <field name="partner_id" ref="demo_passenger_5"/>
-        <field name="driver_partner_id" ref="demo_driver_2"/>
-        <field name="distance">24.4</field>
-        <field name="price">38.6</field>
+        <field name="partner_id" ref="demo_passenger_4"/>
+        <field name="driver_partner_id" ref="demo_driver_4"/>
+        <field name="distance">23.2</field>
+        <field name="price">12538.94</field>
         <field name="state">done</field>
         <field name="stop_ids" eval="[
         (0, 0, {'name': 'C.C. San Ignacio', 'stop_type': 'start', 'latitude': 10.492, 'longitude': -66.852, 'sequence': 1}),
-        (0, 0, {'name': 'Las Mercedes', 'stop_type': 'intermediate', 'latitude': 10.48, 'longitude': -66.865, 'sequence': 2}),
-        (0, 0, {'name': 'C.C. Sambil', 'stop_type': 'intermediate', 'latitude': 10.4855, 'longitude': -66.857, 'sequence': 3}),
-        (0, 0, {'name': 'Bello Monte', 'stop_type': 'end', 'latitude': 10.48, 'longitude': -66.88, 'sequence': 4}),
-    ]"/>
-    </record>
-
-    <record id="demo_trip_19" model="ridery.trips">
-        <field name="partner_id" ref="demo_passenger_2"/>
-        <field name="driver_partner_id" ref="demo_driver_1"/>
-        <field name="distance">14.6</field>
-        <field name="price">23.9</field>
-        <field name="state">cancelled</field>
-        <field name="stop_ids" eval="[
-        (0, 0, {'name': 'Bello Monte', 'stop_type': 'start', 'latitude': 10.48, 'longitude': -66.88, 'sequence': 1}),
         (0, 0, {'name': 'El Hatillo', 'stop_type': 'end', 'latitude': 10.428, 'longitude': -66.822, 'sequence': 2}),
     ]"/>
     </record>
 
+    <record id="demo_trip_18" model="ridery.trips">
+        <field name="partner_id" ref="demo_passenger_2"/>
+        <field name="driver_partner_id" ref="demo_driver_1"/>
+        <field name="distance">3.8</field>
+        <field name="price">4088.01</field>
+        <field name="state">in_progress</field>
+        <field name="stop_ids" eval="[
+        (0, 0, {'name': 'Los Palos Grandes', 'stop_type': 'start', 'latitude': 10.501, 'longitude': -66.84, 'sequence': 1}),
+        (0, 0, {'name': 'C.C. San Ignacio', 'stop_type': 'end', 'latitude': 10.492, 'longitude': -66.852, 'sequence': 2}),
+    ]"/>
+    </record>
+
+    <record id="demo_trip_19" model="ridery.trips">
+        <field name="partner_id" ref="demo_passenger_4"/>
+        <field name="driver_partner_id" ref="demo_driver_1"/>
+        <field name="distance">5.4</field>
+        <field name="price">4405.28</field>
+        <field name="state">cancelled</field>
+        <field name="stop_ids" eval="[
+        (0, 0, {'name': 'Las Mercedes', 'stop_type': 'start', 'latitude': 10.48, 'longitude': -66.865, 'sequence': 1}),
+        (0, 0, {'name': 'Chacao', 'stop_type': 'end', 'latitude': 10.49, 'longitude': -66.85, 'sequence': 2}),
+    ]"/>
+    </record>
+
     <record id="demo_trip_20" model="ridery.trips">
-        <field name="partner_id" ref="demo_passenger_3"/>
-        <field name="driver_partner_id" ref="demo_driver_0"/>
-        <field name="distance">5.0</field>
-        <field name="price">9.5</field>
+        <field name="partner_id" ref="demo_passenger_4"/>
+        <field name="driver_partner_id" ref="demo_driver_3"/>
+        <field name="distance">24.2</field>
+        <field name="price">13318.91</field>
         <field name="state">done</field>
         <field name="stop_ids" eval="[
-        (0, 0, {'name': 'C.C. Sambil', 'stop_type': 'start', 'latitude': 10.4855, 'longitude': -66.857, 'sequence': 1}),
-        (0, 0, {'name': 'Plaza Altamira', 'stop_type': 'intermediate', 'latitude': 10.4965, 'longitude': -66.8488, 'sequence': 2}),
-        (0, 0, {'name': 'Bello Monte', 'stop_type': 'end', 'latitude': 10.48, 'longitude': -66.88, 'sequence': 3}),
+        (0, 0, {'name': 'Las Mercedes', 'stop_type': 'start', 'latitude': 10.48, 'longitude': -66.865, 'sequence': 1}),
+        (0, 0, {'name': 'La Castellana', 'stop_type': 'intermediate', 'latitude': 10.5, 'longitude': -66.85, 'sequence': 2}),
+        (0, 0, {'name': 'El Hatillo', 'stop_type': 'intermediate', 'latitude': 10.428, 'longitude': -66.822, 'sequence': 3}),
+        (0, 0, {'name': 'C.C. Sambil', 'stop_type': 'end', 'latitude': 10.4855, 'longitude': -66.857, 'sequence': 4}),
     ]"/>
     </record>
 
     <record id="demo_trip_21" model="ridery.trips">
         <field name="partner_id" ref="demo_passenger_4"/>
+        <field name="driver_partner_id" ref="demo_driver_3"/>
+        <field name="distance">5.2</field>
+        <field name="price">4064.7</field>
+        <field name="state">done</field>
+        <field name="stop_ids" eval="[
+        (0, 0, {'name': 'Bello Monte', 'stop_type': 'start', 'latitude': 10.48, 'longitude': -66.88, 'sequence': 1}),
+        (0, 0, {'name': 'Chacao', 'stop_type': 'end', 'latitude': 10.49, 'longitude': -66.85, 'sequence': 2}),
+    ]"/>
+    </record>
+
+    <record id="demo_trip_22" model="ridery.trips">
+        <field name="partner_id" ref="demo_passenger_1"/>
+        <field name="driver_partner_id" ref="demo_driver_4"/>
+        <field name="distance">7.5</field>
+        <field name="price">4945.99</field>
+        <field name="state">in_progress</field>
+        <field name="stop_ids" eval="[
+        (0, 0, {'name': 'C.C. San Ignacio', 'stop_type': 'start', 'latitude': 10.492, 'longitude': -66.852, 'sequence': 1}),
+        (0, 0, {'name': 'Plaza Altamira', 'stop_type': 'end', 'latitude': 10.4965, 'longitude': -66.8488, 'sequence': 2}),
+    ]"/>
+    </record>
+
+    <record id="demo_trip_23" model="ridery.trips">
+        <field name="partner_id" ref="demo_passenger_2"/>
         <field name="driver_partner_id" ref="demo_driver_0"/>
-        <field name="distance">4.4</field>
-        <field name="price">8.6</field>
+        <field name="distance">14.1</field>
+        <field name="price">8123.48</field>
         <field name="state">done</field>
         <field name="stop_ids" eval="[
         (0, 0, {'name': 'Chacao', 'stop_type': 'start', 'latitude': 10.49, 'longitude': -66.85, 'sequence': 1}),
@@ -399,44 +421,16 @@
     ]"/>
     </record>
 
-    <record id="demo_trip_22" model="ridery.trips">
-        <field name="partner_id" ref="demo_passenger_1"/>
-        <field name="driver_partner_id" ref="demo_driver_3"/>
-        <field name="distance">23.8</field>
-        <field name="price">37.7</field>
-        <field name="state">done</field>
-        <field name="stop_ids" eval="[
-        (0, 0, {'name': 'Chacao', 'stop_type': 'start', 'latitude': 10.49, 'longitude': -66.85, 'sequence': 1}),
-        (0, 0, {'name': 'La Castellana', 'stop_type': 'intermediate', 'latitude': 10.5, 'longitude': -66.85, 'sequence': 2}),
-        (0, 0, {'name': 'C.C. Sambil', 'stop_type': 'end', 'latitude': 10.4855, 'longitude': -66.857, 'sequence': 3}),
-    ]"/>
-    </record>
-
-    <record id="demo_trip_23" model="ridery.trips">
-        <field name="partner_id" ref="demo_passenger_4"/>
-        <field name="driver_partner_id" ref="demo_driver_1"/>
-        <field name="distance">18.5</field>
-        <field name="price">29.75</field>
-        <field name="state">done</field>
-        <field name="stop_ids" eval="[
-        (0, 0, {'name': 'El Hatillo', 'stop_type': 'start', 'latitude': 10.428, 'longitude': -66.822, 'sequence': 1}),
-        (0, 0, {'name': 'Los Palos Grandes', 'stop_type': 'intermediate', 'latitude': 10.501, 'longitude': -66.84, 'sequence': 2}),
-        (0, 0, {'name': 'Chacao', 'stop_type': 'intermediate', 'latitude': 10.49, 'longitude': -66.85, 'sequence': 3}),
-        (0, 0, {'name': 'Plaza Altamira', 'stop_type': 'end', 'latitude': 10.4965, 'longitude': -66.8488, 'sequence': 4}),
-    ]"/>
-    </record>
-
     <record id="demo_trip_24" model="ridery.trips">
-        <field name="partner_id" ref="demo_passenger_1"/>
-        <field name="driver_partner_id" ref="demo_driver_1"/>
-        <field name="distance">3.9</field>
-        <field name="price">7.85</field>
-        <field name="state">in_progress</field>
+        <field name="partner_id" ref="demo_passenger_5"/>
+        <field name="driver_partner_id" ref="demo_driver_4"/>
+        <field name="distance">15.5</field>
+        <field name="price">8718.0</field>
+        <field name="state">done</field>
         <field name="stop_ids" eval="[
-        (0, 0, {'name': 'Chacao', 'stop_type': 'start', 'latitude': 10.49, 'longitude': -66.85, 'sequence': 1}),
-        (0, 0, {'name': 'C.C. Sambil', 'stop_type': 'intermediate', 'latitude': 10.4855, 'longitude': -66.857, 'sequence': 2}),
-        (0, 0, {'name': 'Bello Monte', 'stop_type': 'intermediate', 'latitude': 10.48, 'longitude': -66.88, 'sequence': 3}),
-        (0, 0, {'name': 'Plaza Altamira', 'stop_type': 'end', 'latitude': 10.4965, 'longitude': -66.8488, 'sequence': 4}),
+        (0, 0, {'name': 'C.C. Sambil', 'stop_type': 'start', 'latitude': 10.4855, 'longitude': -66.857, 'sequence': 1}),
+        (0, 0, {'name': 'C.C. San Ignacio', 'stop_type': 'intermediate', 'latitude': 10.492, 'longitude': -66.852, 'sequence': 2}),
+        (0, 0, {'name': 'Chacao', 'stop_type': 'end', 'latitude': 10.49, 'longitude': -66.85, 'sequence': 3}),
     ]"/>
     </record>
 </data></odoo>

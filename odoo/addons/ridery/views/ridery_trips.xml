@@ -120,7 +120,7 @@
                         <filter string="Cliente" name="group_by_customer" context="{'group_by': 'partner_id'}"/>
                     </group>
                 </search>
-            </field>
+            </field>    
         </record>
 
         <record id="action_ridery_trips" model="ir.actions.act_window">
@@ -130,7 +130,32 @@
             <field name="search_view_id" ref="view_ridery_trips_search"/>
             <field name="help" type="html">
               <p class="o_view_nocontent_smiling_face">
-                ¡Crea el primer viaje de ridery!
+                ¡Crea el primer viaje de Ridery!
+              </p>
+            </field>
+        </record>
+
+        <!-- Vista Graph para Reportes -->
+        <record id="view_ridery_trips_graph" model="ir.ui.view">
+            <field name="name">ridery.trips.graph</field>
+            <field name="model">ridery.trips</field>
+            <field name="arch" type="xml">
+                <graph string="Análisis de Viajes" type="bar" sample="1">
+                    <field name="driver_id" type="row"/>
+                    <field name="price" type="measure"/>
+                    <field name="distance" type="measure"/>
+                </graph>
+            </field>
+        </record>
+
+        <!-- Acción de Reportes -->
+        <record id="action_ridery_trips_report" model="ir.actions.act_window">
+            <field name="name">Análisis de Viajes</field>
+            <field name="res_model">ridery.trips</field>
+            <field name="view_mode">graph,pivot</field>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                No hay datos suficientes para mostrar el análisis de viajes.
               </p>
             </field>
         </record>

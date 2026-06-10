@@ -22,5 +22,20 @@
         action="action_ridery_trips"
         sequence="10"
       />
+
+      <menuitem 
+        id="menu_ridery_reporting"
+        name="Informes"
+        parent="menu_ridery_root"
+        sequence="20"
+      />
+        
+      <menuitem 
+        id="menu_ridery_trips_report_action"
+        name="Análisis de Viajes"
+        parent="menu_ridery_reporting"
+        action="action_ridery_trips_report"
+        sequence="10"
+      />
     </data>
 </odoo>

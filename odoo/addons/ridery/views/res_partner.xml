@@ -12,7 +12,7 @@
                             name="action_view_trips_as_passenger"
                             icon="fa-user"
                             attrs="{'invisible': [('trip_passenger_count', '=', 0)]}">
-                        <field string="Pasajero" name="trip_passenger_count" widget="statinfo"/>
+                        <field string="Viajes" name="trip_passenger_count" widget="statinfo"/>
                     </button>
 
                     <button class="oe_stat_button"
@@ -20,7 +20,7 @@
                             name="action_view_trips_as_driver"
                             icon="fa-car"
                             attrs="{'invisible': [('trip_driver_count', '=', 0)]}">
-                        <field string="Conductor" name="trip_driver_count" widget="statinfo"/>
+                        <field string="Carreras" name="trip_driver_count" widget="statinfo"/>
                     </button>
                 </div>
             </field>

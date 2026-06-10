@@ -85,6 +85,18 @@ class RideryTrips(models.Model):
         string='Paradas',
         help='Listado de paradas del viaje (Inicio, Intermedias, Fin)',
     )
+
+    @api.constrains('stop_ids')
+    def _check_stops_requirements(self):
+        for trip in self:
+            starts = trip.stop_ids.filtered(lambda s: s.stop_type == 'start')
+            ends = trip.stop_ids.filtered(lambda s: s.stop_type == 'end')
+            
+            if len(starts) != 1:
+                raise ValidationError(_("El viaje debe tener exactamente una parada de tipo 'Inicio'."))
+            if len(ends) != 1:
+                raise ValidationError(_("El viaje debe tener exactamente una parada de tipo 'Fin'."))
+
     distance = fields.Float(
         string='Distancia (km)',
         help="Distancia total del viaje medida en kilómetros.",

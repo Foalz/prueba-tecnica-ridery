@@ -165,17 +165,11 @@ class RideryTrips(models.Model):
             if not trip.partner_id:
                 raise ValidationError(_("El viaje debe tener un pasajero asignado para poder facturar."))
             
-            # 1. Lógica simple de facturación (hardcodeada según requerimiento de simplificación)
-            # Buscamos un producto genérico de servicio. Si no existe, usamos el primero que encontremos tipo servicio.
-            product = self.env['product.product'].search([('type', '=', 'service')], limit=1)
-            if not product:
-                raise ValidationError(_("No hay ningún producto de tipo 'Servicio' configurado en Odoo para facturar."))
-
             # Buscamos el diario de ventas estándar
             journal = self.env['account.journal'].search([('type', '=', 'sale'), ('company_id', '=', trip.company_id.id)], limit=1)
             if not journal:
                 raise ValidationError(_("No hay ningún diario de ventas configurado en la compañía."))
-            
+
             # Buscamos o creamos una cuenta de ingresos
             account = self.env['account.account'].search([('account_type', '=', 'income'), ('company_id', '=', trip.company_id.id)], limit=1)
             if not account:
@@ -185,6 +179,20 @@ class RideryTrips(models.Model):
                     'account_type': 'income',
                     'company_id': trip.company_id.id,
                 })
+
+            # Buscamos o creamos el producto oficial de Ridery
+            product = self.env['product.product'].search([('default_code', '=', 'RIDERY_TRIP')], limit=1)
+            if not product:
+                product = self.env['product.product'].create({
+                    'name': 'Servicio de Transporte Ridery',
+                    'type': 'service',
+                    'default_code': 'RIDERY_TRIP',
+                    'property_account_income_id': account.id,
+                    'taxes_id': False, # Sin impuestos por defecto para evitar problemas
+                })
+            else:
+                if not product.property_account_income_id:
+                    product.property_account_income_id = account.id
 
             # 2. Crear la factura (account.move)
             move_vals = {
@@ -204,6 +212,10 @@ class RideryTrips(models.Model):
             }
             
             new_move = self.env['account.move'].create(move_vals)
+
+            if new_move:
+                new_move.action_post()
+                
             trip.move_id = new_move.id
 
     @api.model

@@ -5,7 +5,7 @@
         id="menu_ridery_root"
         name="Ridery Trips"
         sequence="10"
-        groups="group_ridery_trips_admin"
+        groups="group_ridery_trips_user,group_ridery_trips_admin"
       />
         
       <menuitem 

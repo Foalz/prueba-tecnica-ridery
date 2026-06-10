@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!--
+            Hereda el formulario de contacto para:
+            1. Hacer el campo VAT (RIF/Cédula) visualmente requerido
+               cuando la localización venezolana está activa.
+            2. Mostrar ayuda contextual del formato esperado.
+        -->
+        <record id="view_partner_ve_vat_required" model="ir.ui.view">
+            <field name="name">res.partner.ve.vat.required</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <!-- Reemplazar el campo vat para agregar required condicional -->
+                <field name="vat" position="replace">
+                    <field name="vat"
+                           string="RIF / Cédula"
+                           placeholder="V-12345678 / J-123456789"
+                           attrs="{
+                               'required': [('is_ve_localization', '=', True)],
+                           }"
+                    />
+                    <field name="is_ve_localization" invisible="1"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</odoo>

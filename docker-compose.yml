@@ -1,6 +1,7 @@
 version: '3.8'
 
 services:
+  # 1. PostgreSQL Database
   db:
     image: postgres:15
     container_name: ridery_db
@@ -34,9 +35,31 @@ services:
       - ridery_net
     restart: unless-stopped
 
+  # 3. Node API (Sincronización de Viajes)
+  node_api:
+    build:
+      context: ./node_api
+      dockerfile: Dockerfile
+    container_name: ridery_node_api
+    depends_on:
+      - odoo
+    ports:
+      - "3000:3000"
+    environment:
+      - ODOO_BASE_URL=http://odoo:8069
+      - ODOO_API_KEY=RIDERY-CHANGE-ME-IN-PRODUCTION
+      - ODOO_ORIGIN=http://localhost:3000
+    volumes:
+      - ./node_api/src/data:/app/src/data
+      - ridery-api-logs:/app/logs
+    networks:
+      - ridery_net
+    restart: unless-stopped
+
 volumes:
   odoo-db-data:
   odoo-web-data:
+  ridery-api-logs:
 
 networks:
   ridery_net:

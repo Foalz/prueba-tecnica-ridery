@@ -39,7 +39,6 @@ class RideryTrips(models.Model):
     partner_id = fields.Many2one(
         comodel_name='res.partner',
         string='Pasajero',
-        domain=[('ridery_role', '=', 'passenger')],
         required=True,
     )
 
@@ -47,7 +46,7 @@ class RideryTrips(models.Model):
     driver_partner_id = fields.Many2one(
         comodel_name='res.partner',
         string='Conductor',
-        domain=[('ridery_role', '=', 'driver')],
+        domain=[('is_ridery_driver', '=', True)],
         required=True,
         tracking=True,
     )

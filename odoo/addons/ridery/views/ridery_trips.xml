@@ -7,7 +7,8 @@
             <field name="name">ridery.trips.tree</field>
             <field name="model">ridery.trips</field>
             <field name="arch" type="xml">
-                <tree string="Viajes" create="0"
+                <tree string="Viajes"
+
                       decoration-success="state == 'in_progress'"
                       decoration-muted="state == 'cancelled'">
                     <field name="name"/>
@@ -32,7 +33,7 @@
             <field name="name">ridery.trips.form</field>
             <field name="model">ridery.trips</field>
             <field name="arch" type="xml">
-                <form string="Viaje" create="0" edit="0">
+                <form string="Viaje">
                     <header>
                         <button name="action_create_invoice" string="Facturar Viaje" type="object" class="oe_highlight" attrs="{'invisible': ['|', ('move_id', '!=', False), ('state', 'not in', ['in_progress', 'done'])]}"/>
                         <field name="state" widget="statusbar" statusbar_visible="in_progress,done" options="{'clickable': '1'}"/>
@@ -46,14 +47,14 @@
                         <group>
                             <group string="Detalles del Viaje">
 
-                                <field name="distance"/>
-                                <field name="price"/>
+                                <field name="distance" attrs="{'readonly': [('state', 'in', ['done', 'cancelled'])]}"/>
+                                <field name="price" attrs="{'readonly': [('state', 'in', ['done', 'cancelled'])]}"/>
                                 <field name="currency_id" invisible="1"/>
                                 <field name="move_id" attrs="{'invisible': [('move_id', '=', False)]}"/>
                             </group>
                             <group string="Asignación de Conductor">
-                                <field name="partner_id" string="Pasajero" options="{'no_quick_create': True}"/>
-                                <field name="driver_partner_id" domain="[('is_ridery_driver', '=', True)]" options="{'no_quick_create': True, 'no_create': True}"/>
+                                <field name="partner_id" string="Pasajero" options="{'no_quick_create': True}" attrs="{'readonly': [('state', 'in', ['done', 'cancelled'])]}"/>
+                                <field name="driver_partner_id" domain="[('is_ridery_driver', '=', True)]" options="{'no_quick_create': True, 'no_create': True}" attrs="{'readonly': [('state', 'in', ['done', 'cancelled'])]}"/>
                                 <field name="vehicle_id" readonly="1"/>
                                 <field name="driver_license_plate" readonly="1"/>
                                 <field name="fleet_category_id" invisible="1"/>
@@ -61,7 +62,7 @@
                         </group>
                         <notebook>
                             <page string="Paradas">
-                                <field name="stop_ids">
+                                <field name="stop_ids" attrs="{'readonly': [('state', 'in', ['done', 'cancelled'])]}">
                                     <tree editable="bottom">
                                         <field name="sequence" widget="handle"/>
                                         <field name="stop_type"/>
@@ -87,7 +88,7 @@
             <field name="name">ridery.trips.kanban</field>
             <field name="model">ridery.trips</field>
             <field name="arch" type="xml">
-                <kanban default_group_by="state" class="o_kanban_small_column" sample="1" create="0">
+                <kanban default_group_by="state" class="o_kanban_small_column" sample="1">
                     <field name="name"/>
                     <field name="partner_id"/>
                     <field name="driver_partner_id"/>

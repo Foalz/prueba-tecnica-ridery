@@ -1,6 +1,6 @@
 # Prueba Técnica Ridery
 
-Este proyecto consiste en un sistema de registro de viajes en **Odoo 16** sincronizado a través de una **API en Node.js**. La arquitectura está completamente dockerizada para facilitar su despliegue y evaluación.
+> **Descripción:** Este proyecto consiste en un sistema de registro de viajes en **Odoo 16** sincronizado a través de una **API en Node.js**. La arquitectura está completamente dockerizada para facilitar su despliegue y evaluación.
 
 ---
 
@@ -22,20 +22,35 @@ El proyecto está configurado para levantarse con un solo comando. Sigue estos p
    ```bash
    docker compose up -d --build
    ```
-3. Espera un par de minutos a que Odoo instale los módulos y configure la base de datos por primera vez.
+3. Asegúrate de crear el archivo `.env` con la configuración necesaria expuesta en el archivo `.env.example`.
+   > Ejemplo de archivo `.env`:
+   ```env
+   DB_NAME=odoo
+   DB_USER=odoo
+   DB_PASSWORD=abc123
+   ```
+4. Espera un par de minutos a que Odoo instale los módulos y configure la base de datos por primera vez.
+5. Ingresa a [http://localhost:8069](http://localhost:8069) e inicia sesión con el usuario `admin` y contraseña `admin`. El contenedor levanta la instancia de Odoo con las credenciales de prueba por defecto y data de demostración para facilitar la evaluación.
+6. Al iniciar la base de datos, Docker instalará los módulos: **Ridery** y la extensión de la **Localización Venezolana**.
+7. Es necesario ingresar a **Ajustes -> Facturación -> Paquete de Localización** y seleccionar la localización contable venezolana para asegurar de que los diarios y los planes de cuenta se instalen dentro del sistema y que la moneda sea la correcta.
 
+   ![Configuración de Localización Venezolana](assets/config.png)
 ---
 
 ## 🖥️ Acceso a Odoo
 
 - **URL:** [http://localhost:8069](http://localhost:8069)
-- **Usuario por defecto:** (El que hayas configurado al crear la base de datos, o `admin@example.com` / `admin` dependiendo de tu entorno).
+- **Usuario por defecto:** `admin`
+- **Contraseña por defecto:** `admin`
 
 ### ¿Dónde ver los viajes?
 1. Inicia sesión en Odoo.
-2. Abre la aplicación **"Viajes" (Ridery)** en el menú principal.
-3. Podrás ver el listado de viajes registrados, con su conductor, pasajero, facturación, y las paradas en su ruta.
-
+2. Abre la aplicación **Ridery Trips** en el menú principal.
+3. Podrás ver el listado de viajes registrados, con su conductor, pasajero, facturación. Todo esto en una vista Kanban.
+   ![Viajes registrados](assets/ridery_module.png)
+4. Desde la vista form se pueden visualizar mayor lujo de detalles, sin embargo, no se pueden editar los datos, ya que la idea es que los datos provengan desde la API.
+   ![Viajes registrados](assets/ridery_module_detail.png)
+**Nota importante:** Existe un cron en Odoo que se ejecuta cada 5 minutos para facturar todos los viajes pendientes, aunque se encuentra disponible la opción de facturar manualmente a través del botón solicitado.
 ---
 
 ## 🔌 Uso de la API de Node.js (Sincronización)

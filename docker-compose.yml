@@ -24,13 +24,14 @@ services:
       - "8069:8069"
     volumes:
       - ./odoo/addons:/mnt/extra-addons
-      - ./odoo/config/odoo.conf:/etc/odoo/odoo.conf
+      - ./odoo/config/entrypoint.sh:/custom-entrypoint.sh
       - odoo-web-data:/var/lib/odoo
     environment:
       - HOST=db
       - USER=${DB_USER}
       - PASSWORD=${DB_PASSWORD}
-    command: odoo -d ${DB_NAME} -i ridery --load-language=es_VE
+    entrypoint: /custom-entrypoint.sh
+    command: -d ${DB_NAME} -i ridery --load-language=es_VE
     networks:
       - ridery_net
     restart: unless-stopped

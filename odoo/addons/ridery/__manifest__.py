@@ -12,7 +12,8 @@
     'depends': [
         'base',
         'fleet', 
-        'account'
+        'account',
+        'l10n_ve_custom'
     ],
     'data': [
         'security/res_groups.xml',

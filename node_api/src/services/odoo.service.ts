@@ -75,20 +75,16 @@ export async function syncTripsToOdoo(): Promise<SyncResult> {
     throw new Error(message);
   }
 
-  // ── Errores de autenticación / CORS ───────────────────────────────────────
-  if (httpStatus === 401 || httpStatus === 403) {
-    const message = odooResponse.message ?? `HTTP ${httpStatus}`;
+  // ── Errores de autenticación / CORS u otros HTTP errors ─────────────────
+  if (httpStatus >= 400 && httpStatus < 500 && (!odooResponse || !odooResponse.errors)) {
+    const message = odooResponse?.message ?? `HTTP ${httpStatus}. (Posiblemente Odoo no encontró la ruta. Si tienes múltiples BDs, Odoo requiere ?db=nombre_db en la URL).`;
     logOdooCall({ status: 'error', endpoint: ODOO_ENDPOINT, message, httpStatus });
     throw new Error(message);
   }
 
-  // ── Mapear resultados al array original ───────────────────────────────────
-  //
-  // Odoo devuelve:
-  //   trips[]  → viajes creados, en orden de los NO-errores del input
-  //   errors[] → { index, message } donde index = posición en el array enviado
-  //
-  const errorIndexSet = new Set(odooResponse.errors.map((e) => e.index));
+  // Si llegamos aquí y no hay errors, forzamos un array vacío por seguridad
+  const errorsArray = odooResponse?.errors || [];
+  const errorIndexSet = new Set(errorsArray.map((e) => e.index));
   const syncErrors: SyncResult['errors'] = [];
   const now = new Date().toISOString();
   let createdCursor = 0;

@@ -4,35 +4,65 @@
     "passenger_vat": "V-12345678",
     "driver_vat": "V-87654321",
     "distance_km": 8.4,
-    "fare": 15.50,
+    "fare": 15.5,
     "status": "completed",
     "requested_at": "2026-06-10T07:00:00.000Z",
     "stops": [
-      { "name": "Plaza Altamira", "type": "start", "lat": 10.4965, "lng": -66.8488 },
-      { "name": "C.C. San Ignacio", "type": "intermediate", "lat": 10.4920, "lng": -66.8520 },
-      { "name": "Centro Lido", "type": "intermediate", "lat": 10.4880, "lng": -66.8550 },
-      { "name": "C.C. Sambil", "type": "end", "lat": 10.4855, "lng": -66.8570 }
+      {
+        "name": "Plaza Altamira",
+        "type": "start",
+        "lat": 10.4965,
+        "lng": -66.8488
+      },
+      {
+        "name": "C.C. San Ignacio",
+        "type": "intermediate",
+        "lat": 10.492,
+        "lng": -66.852
+      },
+      {
+        "name": "Centro Lido",
+        "type": "intermediate",
+        "lat": 10.488,
+        "lng": -66.855
+      },
+      {
+        "name": "C.C. Sambil",
+        "type": "end",
+        "lat": 10.4855,
+        "lng": -66.857
+      }
     ],
     "odoo_id": null,
     "odoo_reference": null,
     "synced_at": null,
-    "sync_error": null
+    "sync_error": "No se encontró ningún contacto con el RIF/Cédula 'V-12345678' para el campo 'passenger_vat'."
   },
   {
     "trip_uuid": "a1b2c3d4-e002",
     "passenger_vat": "V-23456789",
     "driver_vat": "V-98765432",
     "distance_km": 12.1,
-    "fare": 22.00,
+    "fare": 22,
     "status": "in_progress",
     "requested_at": "2026-06-10T07:30:00.000Z",
     "stops": [
-      { "name": "Las Mercedes", "type": "start", "lat": 10.4800, "lng": -66.8650 },
-      { "name": "El Hatillo", "type": "end", "lat": 10.4280, "lng": -66.8220 }
+      {
+        "name": "Las Mercedes",
+        "type": "start",
+        "lat": 10.48,
+        "lng": -66.865
+      },
+      {
+        "name": "El Hatillo",
+        "type": "end",
+        "lat": 10.428,
+        "lng": -66.822
+      }
     ],
     "odoo_id": null,
     "odoo_reference": null,
     "synced_at": null,
-    "sync_error": null
+    "sync_error": "No se encontró ningún contacto con el RIF/Cédula 'V-23456789' para el campo 'passenger_vat'."
   }
 ]

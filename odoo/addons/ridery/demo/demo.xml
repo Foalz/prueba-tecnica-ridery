@@ -44,35 +44,35 @@
     </record>
 
     <record id="demo_driver_0" model="res.partner">
-        <field name="name">Pedro Driver (Corolla)</field>
+        <field name="name">Pedro Castro</field>
         <field name="vat">V-87654321</field>
         <field name="email">pedro@demo.ridery</field>
         <field name="phone">+58 424 777 8899</field>
     </record>
 
     <record id="demo_driver_1" model="res.partner">
-        <field name="name">Jose Driver (Optra)</field>
+        <field name="name">José Mendoza</field>
         <field name="vat">V-98765432</field>
         <field name="email">jose@demo.ridery</field>
         <field name="phone">+58 416 999 0011</field>
     </record>
 
     <record id="demo_driver_2" model="res.partner">
-        <field name="name">Miguel Driver (Yaris)</field>
+        <field name="name">Miguel Padrón</field>
         <field name="vat">V-12312312</field>
         <field name="email">miguel@demo.ridery</field>
         <field name="phone">+58 412 123 1234</field>
     </record>
 
     <record id="demo_driver_3" model="res.partner">
-        <field name="name">Roberto Driver (Spark)</field>
+        <field name="name">Roberto Silva</field>
         <field name="vat">V-32132132</field>
         <field name="email">roberto@demo.ridery</field>
         <field name="phone">+58 414 321 4321</field>
     </record>
 
     <record id="demo_driver_4" model="res.partner">
-        <field name="name">Jesus Driver (Civic)</field>
+        <field name="name">Jesús Herrera</field>
         <field name="vat">V-45645645</field>
         <field name="email">jesus@demo.ridery</field>
         <field name="phone">+58 424 456 6543</field>

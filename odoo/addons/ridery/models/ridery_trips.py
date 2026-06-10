@@ -170,29 +170,10 @@ class RideryTrips(models.Model):
             if not journal:
                 raise ValidationError(_("No hay ningún diario de ventas configurado en la compañía."))
 
-            # Buscamos o creamos una cuenta de ingresos
-            account = self.env['account.account'].search([('account_type', '=', 'income'), ('company_id', '=', trip.company_id.id)], limit=1)
-            if not account:
-                account = self.env['account.account'].create({
-                    'name': 'Ingresos por Servicios de Transporte',
-                    'code': '400000',
-                    'account_type': 'income',
-                    'company_id': trip.company_id.id,
-                })
-
-            # Buscamos o creamos el producto oficial de Ridery
-            product = self.env['product.product'].search([('default_code', '=', 'RIDERY_TRIP')], limit=1)
+            # Buscamos el producto pre-creado vía XML
+            product = self.env.ref('ridery.product_ridery_trip', raise_if_not_found=False)
             if not product:
-                product = self.env['product.product'].create({
-                    'name': 'Servicio de Transporte Ridery',
-                    'type': 'service',
-                    'default_code': 'RIDERY_TRIP',
-                    'property_account_income_id': account.id,
-                    'taxes_id': False, # Sin impuestos por defecto para evitar problemas
-                })
-            else:
-                if not product.property_account_income_id:
-                    product.property_account_income_id = account.id
+                raise ValidationError(_("El producto 'Servicio de Transporte Ridery' no está configurado en el sistema."))
 
             # 2. Crear la factura (account.move)
             move_vals = {
@@ -207,7 +188,6 @@ class RideryTrips(models.Model):
                     'name': f'Servicio de Transporte Ridery - {trip.fleet_category_id.name or "Estándar"}',
                     'quantity': 1.0,
                     'price_unit': trip.price,
-                    'account_id': account.id,
                 })],
             }
             

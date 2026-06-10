@@ -26,6 +26,9 @@
         'views/res_partner.xml',
         'views/menu.xml',
     ],
+    'demo': [
+        'demo/demo.xml',
+    ],
     'installable': True,
     'application': True,
     'license': 'LGPL-3',

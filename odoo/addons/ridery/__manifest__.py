@@ -13,6 +13,7 @@
         'base',
         'fleet', 
         'account',
+        'l10n_ve',
         'l10n_ve_custom'
     ],
     'data': [
@@ -22,6 +23,7 @@
         'data/sequence.xml',
         'data/api_config.xml',
         'data/cron.xml',
+        'data/company_config.xml',
 
         'views/ridery_trips.xml',
         'views/res_partner.xml',

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Activar moneda Bolívares (VES) -->
+        <record id="base.VES" model="res.currency">
+            <field name="active" eval="True"/>
+        </record>
+        
+        <!-- Forzar a la Compañía Principal a usar Venezuela y VES -->
+        <record id="base.main_company" model="res.company">
+            <field name="currency_id" ref="base.VES"/>
+            <field name="country_id" ref="base.ve"/>
+        </record>
+
+        <!-- Crear un diario de ventas básico para que no falle la facturación de prueba -->
+        <record id="demo_sales_journal" model="account.journal">
+            <field name="name">Ventas Ridery</field>
+            <field name="code">RID</field>
+            <field name="type">sale</field>
+            <field name="company_id" ref="base.main_company"/>
+        </record>
+    </data>
+</odoo>

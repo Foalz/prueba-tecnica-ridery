@@ -5,7 +5,7 @@ from odoo.exceptions import ValidationError
 class RideryTripStop(models.Model):
     _name = 'ridery.trip.stop'
     _description = 'Parada de Viaje Ridery'
-    _order = 'sequence, id'
+    _order = 'stop_type_order, sequence, id'
 
     trip_id = fields.Many2one(
         comodel_name='ridery.trips',
@@ -39,6 +39,21 @@ class RideryTripStop(models.Model):
         string='Secuencia',
         default=10,
     )
+    stop_type_order = fields.Integer(
+        string='Orden por Tipo',
+        compute='_compute_stop_type_order',
+        store=True,
+    )
+
+    @api.depends('stop_type')
+    def _compute_stop_type_order(self):
+        for record in self:
+            if record.stop_type == 'start':
+                record.stop_type_order = 1
+            elif record.stop_type == 'end':
+                record.stop_type_order = 3
+            else:
+                record.stop_type_order = 2
 
     @api.constrains('stop_type', 'trip_id')
     def _check_stop_types(self):

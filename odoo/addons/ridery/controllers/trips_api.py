@@ -159,10 +159,25 @@ def _validate_trip(env, trip_data):
         'distance':          distance,
         'price':             price,
         'state':             state,
-
-        'start_address':     trip_data.get('start_address'),
-        'end_address':       trip_data.get('end_address'),
     }
+
+    stops_input = trip_data.get('stops', [])
+    if not isinstance(stops_input, list):
+        return None, "'stops' debe ser un arreglo de paradas"
+    if not stops_input:
+        return None, "El viaje debe contener al menos una parada"
+
+    # Convertir a One2Many de Odoo: (0, 0, {campos})
+    stop_commands = []
+    for s in stops_input:
+        stop_commands.append((0, 0, {
+            'name': s.get('name', 'Parada sin nombre'),
+            'stop_type': s.get('type', 'intermediate'),
+            'latitude': float(s.get('lat', 0.0)),
+            'longitude': float(s.get('lng', 0.0)),
+        }))
+    
+    vals['stop_ids'] = stop_commands
 
     company_id = trip_data.get('company_id')
     if company_id is not None:

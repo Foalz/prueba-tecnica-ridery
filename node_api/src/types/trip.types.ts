@@ -8,9 +8,7 @@ export interface RawTrip {
   fare: number;
   status: AppTripStatus;
   requested_at: string;
-  city: string;
-  start_address: string;
-  end_address: string;
+  stops: TripStop[];
 
   odoo_id: number | null;
   odoo_reference: string | null;
@@ -26,15 +24,20 @@ export type AppTripStatus =
   | 'completed'
   | 'cancelled';
 
+export interface TripStop {
+  name: string;
+  type: 'start' | 'intermediate' | 'end';
+  lat: number;
+  lng: number;
+}
+
 export interface OdooTrip {
   passenger_vat: string;
   driver_vat: string;
   distance: number;
   price: number;
   state?: OdooTripState;
-  city: string;
-  start_address: string;
-  end_address: string;
+  stops: TripStop[];
 }
 
 export type OdooTripState = 'draft' | 'confirmed' | 'in_progress' | 'cancelled';

@@ -22,10 +22,8 @@ function toOdooPayload(trip: RawTrip): OdooTrip {
     driver_vat:    trip.driver_vat,
     distance:      trip.distance_km,
     price:         trip.fare,
-    state:         STATUS_MAP[trip.status] ?? 'draft',
-    city:          trip.city,
-    start_address: trip.start_address,
-    end_address:   trip.end_address,
+    state:         STATUS_MAP[trip.status] ?? 'in_progress',
+    stops:         trip.stops,
   };
 }
 

@@ -1,0 +1,67 @@
+[
+  {
+    "trip_uuid": "a1b2c3d4-e001",
+    "passenger_vat": "V-12345678",
+    "driver_vat": "V-87654321",
+    "distance_km": 8.4,
+    "fare": 15.50,
+    "status": "confirmed",
+    "requested_at": "2026-06-10T07:00:00.000Z",
+    "odoo_id": null,
+    "odoo_reference": null,
+    "synced_at": null,
+    "sync_error": null
+  },
+  {
+    "trip_uuid": "a1b2c3d4-e002",
+    "passenger_vat": "V-23456789",
+    "driver_vat": "V-98765432",
+    "distance_km": 12.1,
+    "fare": 22.00,
+    "status": "in_route",
+    "requested_at": "2026-06-10T07:30:00.000Z",
+    "odoo_id": null,
+    "odoo_reference": null,
+    "synced_at": null,
+    "sync_error": null
+  },
+  {
+    "trip_uuid": "a1b2c3d4-e003",
+    "passenger_vat": "E-34567890",
+    "driver_vat": "V-11223344",
+    "distance_km": 3.7,
+    "fare": 8.00,
+    "status": "pending",
+    "requested_at": "2026-06-10T08:00:00.000Z",
+    "odoo_id": null,
+    "odoo_reference": null,
+    "synced_at": null,
+    "sync_error": null
+  },
+  {
+    "trip_uuid": "a1b2c3d4-e004",
+    "passenger_vat": "V-45678901",
+    "driver_vat": "V-55667788",
+    "distance_km": 22.5,
+    "fare": 38.50,
+    "status": "cancelled",
+    "requested_at": "2026-06-10T08:15:00.000Z",
+    "odoo_id": null,
+    "odoo_reference": null,
+    "synced_at": null,
+    "sync_error": null
+  },
+  {
+    "trip_uuid": "a1b2c3d4-e005",
+    "passenger_vat": "V-56789012",
+    "driver_vat": "V-99887766",
+    "distance_km": 5.2,
+    "fare": 10.75,
+    "status": "in_progress",
+    "requested_at": "2026-06-10T08:45:00.000Z",
+    "odoo_id": null,
+    "odoo_reference": null,
+    "synced_at": null,
+    "sync_error": null
+  }
+]

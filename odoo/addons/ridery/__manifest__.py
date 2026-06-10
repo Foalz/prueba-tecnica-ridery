@@ -20,6 +20,7 @@
 
         'data/sequence.xml',
         'data/api_config.xml',
+        'data/cron.xml',
 
         'views/ridery_trips.xml',
         'views/res_partner.xml',

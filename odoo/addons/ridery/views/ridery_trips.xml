@@ -3,7 +3,7 @@
     <data>
 
         <!-- ═══════════════════════ TREE ═══════════════════════════════════════ -->
-        <record id="view_rideryy_trips_tree" model="ir.ui.view">
+        <record id="view_ridery_trips_tree" model="ir.ui.view">
             <field name="name">ridery.trips.tree</field>
             <field name="model">ridery.trips</field>
             <field name="arch" type="xml">
@@ -14,7 +14,7 @@
                     <field name="name"/>
                     <field name="partner_id" string="Pasajero"/>
                     <field name="driver_partner_id" string="Conductor"/>
-                    <field name="driver_license_plate" string="Placa"/>
+                    <field name="city" optional="show"/>
                     <field name="distance" sum="Total Distancia"/>
                     <field name="price" sum="Total Ingresos"/>
                     <field name="state" widget="badge"
@@ -22,6 +22,7 @@
                            decoration-success="state == 'in_progress'"
                            decoration-warning="state == 'confirmed'"
                            decoration-danger="state == 'cancelled'"/>
+                    <field name="move_id" optional="show"/>
                     <field name="currency_id" invisible="1"/>
                     <field name="company_id" invisible="1"/>
                 </tree>
@@ -29,14 +30,14 @@
         </record>
 
         <!-- ═══════════════════════ FORM ═══════════════════════════════════════ -->
-        <record id="view_rideryy_trips_form" model="ir.ui.view">
+        <record id="view_ridery_trips_form" model="ir.ui.view">
             <field name="name">ridery.trips.form</field>
             <field name="model">ridery.trips</field>
             <field name="arch" type="xml">
                 <form string="Viaje">
                     <header>
-                        <field name="state" widget="statusbar"
-                               statusbar_visible="draft,confirmed,in_progress"/>
+                        <button name="action_create_invoice" string="Facturar Viaje" type="object" class="oe_highlight" attrs="{'invisible': ['|', ('move_id', '!=', False), ('state', 'not in', ['confirmed', 'in_progress'])]}" groups="account.group_account_invoice"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,in_progress,cancelled"/>
                     </header>
                     <sheet>
                         <div class="oe_title">
@@ -45,34 +46,29 @@
                             </h1>
                         </div>
                         <group>
-                            <group string="Detalles del Pasajero">
-                                <field name="partner_id"
-                                       domain="[('ridery_role', '=', 'passenger')]"/>
+                            <group string="Detalles del Viaje">
+                                <field name="start_address"/>
+                                <field name="end_address"/>
+                                <field name="city"/>
                                 <field name="distance"/>
+                                <field name="price"/>
+                                <field name="currency_id" invisible="1"/>
+                                <field name="move_id" attrs="{'invisible': [('move_id', '=', False)]}"/>
                             </group>
                             <group string="Asignación de Conductor">
-                                <field name="driver_partner_id"
-                                       domain="[('ridery_role', '=', 'driver')]"/>
-                                <!-- Vehículo derivado automáticamente del conductor -->
+                                <field name="partner_id" domain="[('ridery_role', '=', 'passenger')]"/>
+                                <field name="driver_partner_id" domain="[('ridery_role', '=', 'driver')]"/>
                                 <field name="vehicle_id" readonly="1"/>
                                 <field name="driver_license_plate" readonly="1"/>
+                                <field name="fleet_category_id" invisible="1"/>
                             </group>
                         </group>
-                        <group>
-                            <group string="Facturación">
-                                <field name="price" widget="monetary"
-                                       options="{'currency_field': 'currency_id'}"/>
-                                <field name="move_id" readonly="1"/>
-                                <field name="currency_id" invisible="1"/>
-                                <field name="company_id" invisible="1"/>
-                            </group>
-                        </group>
+                        <div class="oe_chatter">
+                            <field name="message_follower_ids" widget="mail_followers"/>
+                            <field name="activity_ids" widget="mail_activity"/>
+                            <field name="message_ids" widget="mail_thread"/>
+                        </div>
                     </sheet>
-                    <div class="oe_chatter">
-                        <field name="message_follower_ids" widget="mail_followers"/>
-                        <field name="activity_ids" widget="mail_activity"/>
-                        <field name="message_ids" widget="mail_thread"/>
-                    </div>
                 </form>
             </field>
         </record>

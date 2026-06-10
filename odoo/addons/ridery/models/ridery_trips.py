@@ -66,8 +66,25 @@ class RideryTrips(models.Model):
         index=True,
         store=True,
     )
+    fleet_category_id = fields.Many2one(
+        comodel_name='fleet.vehicle.model.category',
+        string='Tipo de Flota',
+        related='vehicle_id.category_id',
+        store=True,
+        readonly=True,
+    )
 
     # ── Viaje ─────────────────────────────────────────────────────────────────
+    city = fields.Char(
+        string='Ciudad',
+        help="Ciudad donde se realizó el viaje",
+    )
+    start_address = fields.Char(
+        string='Dirección de Inicio',
+    )
+    end_address = fields.Char(
+        string='Dirección Fin',
+    )
     distance = fields.Float(
         string='Distancia (km)',
         help="Distancia total del viaje medida en kilómetros.",
@@ -130,3 +147,55 @@ class RideryTrips(models.Model):
                     self.env['ir.sequence'].next_by_code('ridery.trips') or _('Nuevo')
                 )
         return super().create(vals_list)
+
+    # ── Facturación ───────────────────────────────────────────────────────────
+
+    def action_create_invoice(self):
+        """Crea una factura para el viaje actual basado en la ciudad y tipo de flota"""
+        for trip in self:
+            if trip.move_id:
+                raise ValidationError(_("El viaje %s ya tiene una factura asignada.") % trip.name)
+            if not trip.partner_id:
+                raise ValidationError(_("El viaje debe tener un pasajero asignado para poder facturar."))
+            
+            # 1. Lógica simple de facturación (hardcodeada según requerimiento de simplificación)
+            # Buscamos un producto genérico de servicio. Si no existe, usamos el primero que encontremos tipo servicio.
+            product = self.env['product.product'].search([('type', '=', 'service')], limit=1)
+            if not product:
+                raise ValidationError(_("No hay ningún producto de tipo 'Servicio' configurado en Odoo para facturar."))
+
+            # Buscamos el diario de ventas estándar
+            journal = self.env['account.journal'].search([('type', '=', 'sale'), ('company_id', '=', trip.company_id.id)], limit=1)
+            if not journal:
+                raise ValidationError(_("No hay ningún diario de ventas configurado en la compañía."))
+
+            # 2. Crear la factura (account.move)
+            move_vals = {
+                'move_type': 'out_invoice',
+                'partner_id': trip.partner_id.id,
+                'journal_id': journal.id,
+                'currency_id': trip.currency_id.id,
+                'company_id': trip.company_id.id,
+                'invoice_origin': trip.name,
+                'invoice_line_ids': [(0, 0, {
+                    'product_id': product.id,
+                    'name': f'Servicio de Transporte Ridery - {trip.fleet_category_id.name or "Estándar"} - {trip.city or "Sin Ciudad"}',
+                    'quantity': 1.0,
+                    'price_unit': trip.price,
+                })],
+            }
+            
+            new_move = self.env['account.move'].create(move_vals)
+            trip.move_id = new_move.id
+
+    @api.model
+    def cron_invoice_trips(self):
+        """Cron job para facturar por lotes viajes en progreso o confirmados que no tengan factura"""
+        trips_to_invoice = self.search([
+            ('move_id', '=', False),
+            ('state', 'in', ['confirmed', 'in_progress'])
+        ], limit=100) # Lote de 100 para no agotar la memoria
+        
+        if trips_to_invoice:
+            trips_to_invoice.action_create_invoice()
+

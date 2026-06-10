@@ -30,7 +30,7 @@ services:
       - HOST=db
       - USER=${DB_USER}
       - PASSWORD=${DB_PASSWORD}
-    entrypoint: /bin/bash -c "tr -d '\r' < /custom-entrypoint.sh > /tmp/clean-entrypoint.sh && bash /tmp/clean-entrypoint.sh"
+    entrypoint: /custom-entrypoint.sh
     command: -d ${DB_NAME} -i ridery --load-language=es_VE
     networks:
       - ridery_net

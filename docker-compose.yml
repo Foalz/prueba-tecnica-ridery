@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15
+    container_name: ridery_db
+    environment:
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_USER=${DB_USER}
+    volumes:
+      - odoo-db-data:/var/lib/postgresql/data
+    networks:
+      - ridery_net
+    restart: unless-stopped
+
+  # 2. Odoo ERP (Versión 16)
+  odoo:
+    image: odoo:16.0
+    container_name: ridery_odoo
+    depends_on:
+      - db
+    ports:
+      - "8069:8069"
+    volumes:
+      - ./odoo/addons:/mnt/extra-addons
+      - ./odoo/config/odoo.conf:/etc/odoo/odoo.conf
+      - odoo-web-data:/var/lib/odoo
+    environment:
+      - HOST=db
+      - USER=${DB_USER}
+      - PASSWORD=${DB_PASSWORD}
+    command: odoo -d ${DB_NAME} -i base --without-demo=all
+    networks:
+      - ridery_net
+    restart: unless-stopped
+
+volumes:
+  odoo-db-data:
+  odoo-web-data:
+
+networks:
+  ridery_net:
+    driver: bridge

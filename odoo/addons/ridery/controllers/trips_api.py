@@ -70,14 +70,14 @@ def _resolve_partner(env, vat_raw, expected_role, field_label):
             f"para el campo '{field_label}'."
         )
 
-    # 3. Tiene el rol correcto
-    role_labels = {'passenger': 'Pasajero', 'driver': 'Conductor'}
-    if partner.ridery_role != expected_role:
-        return None, (
-            f"El contacto '{partner.name}' (RIF/Cédula: {vat}) "
-            f"no tiene el rol '{role_labels[expected_role]}' en Ridery "
-            f"(rol actual: '{partner.ridery_role}')."
-        )
+    # 3. Tiene el rol correcto (Solo validamos al conductor)
+    if expected_role == 'driver':
+        if not partner.is_ridery_driver:
+            return None, (
+                f"El contacto '{partner.name}' (RIF/Cédula: {vat}) "
+                f"no tiene ningún vehículo asignado en la Flota de Odoo, "
+                f"por lo que no puede ser Conductor."
+            )
 
     return partner.id, None
 

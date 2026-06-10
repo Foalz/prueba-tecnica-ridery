@@ -26,10 +26,7 @@
                     </button>
                 </div>
 
-                <!-- Campo Rol Ridery: justo debajo del RIF/Cédula -->
-                <xpath expr="//field[@name='vat']" position="after">
-                    <field name="ridery_role"/>
-                </xpath>
+                <!-- Ya no inyectamos el campo de rol manualmente, se calcula desde la flota -->
 
             </field>
         </record>

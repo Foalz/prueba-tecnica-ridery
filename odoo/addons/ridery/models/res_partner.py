@@ -5,19 +5,18 @@ from odoo import models, fields, api
 class ResPartner(models.Model):
     _inherit = 'res.partner'
 
-    ridery_role = fields.Selection(
-        selection=[
-            ('passenger', 'Pasajero'),
-            ('driver', 'Conductor'),
-            ('na', 'No Aplica'),
-        ],
-        string='Rol Ridery',
-        required=True,
-        default='na',
-        tracking=True,
-        index=True,
-        help="Define el rol de este contacto en la plataforma Ridery.",
+    is_ridery_driver = fields.Boolean(
+        string='Es Conductor',
+        compute='_compute_is_ridery_driver',
+        store=False,
     )
+
+    def _compute_is_ridery_driver(self):
+        for partner in self:
+            # Es conductor si tiene al menos un vehículo asignado
+            partner.is_ridery_driver = bool(
+                self.env['fleet.vehicle'].search_count([('driver_id', '=', partner.id)])
+            )
 
     trip_passenger_count = fields.Integer(
         string='Viajes como Pasajero',

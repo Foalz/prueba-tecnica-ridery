@@ -52,7 +52,7 @@
                                 <field name="move_id" attrs="{'invisible': [('move_id', '=', False)]}"/>
                             </group>
                             <group string="Asignación de Conductor">
-                                <field name="partner_id" string="Pasajero (Cualquiera)"/>
+                                <field name="partner_id" string="Pasajero"/>
                                 <field name="driver_partner_id" domain="[('is_ridery_driver', '=', True)]"/>
                                 <field name="vehicle_id" readonly="1"/>
                                 <field name="driver_license_plate" readonly="1"/>

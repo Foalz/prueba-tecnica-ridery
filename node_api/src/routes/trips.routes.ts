@@ -87,6 +87,23 @@ router.post('/reset-demo', async (_req: Request, res: Response, next: NextFuncti
         "odoo_reference": null,
         "synced_at": null,
         "sync_error": null
+      },
+      {
+        "trip_uuid": "a1b2c3d4-e003",
+        "passenger_vat": "V-11111111",
+        "driver_vat": "V-00000000",
+        "distance_km": 5.0,
+        "fare": 10.0,
+        "status": "pending",
+        "requested_at": "2026-06-10T08:00:00.000Z",
+        "stops": [
+          { "name": "Origen Desconocido", "type": "start", "lat": 10.0, "lng": -66.0 },
+          { "name": "Destino Desconocido", "type": "end", "lat": 10.1, "lng": -66.1 }
+        ],
+        "odoo_id": null,
+        "odoo_reference": null,
+        "synced_at": null,
+        "sync_error": null
       }
     ];
 

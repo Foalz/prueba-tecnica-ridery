@@ -1,7 +1,7 @@
 [
   {
     "trip_uuid": "a1b2c3d4-e001",
-    "passenger_vat": "V-12345678",
+    "passenger_vat": "V-11111111",
     "driver_vat": "V-87654321",
     "distance_km": 8.4,
     "fare": 15.5,
@@ -33,14 +33,14 @@
         "lng": -66.857
       }
     ],
-    "odoo_id": null,
-    "odoo_reference": null,
-    "synced_at": null,
-    "sync_error": "No se encontró ningún contacto con el RIF/Cédula 'V-12345678' para el campo 'passenger_vat'."
+    "odoo_id": 59,
+    "odoo_reference": "VJ/2026/00059",
+    "synced_at": "2026-06-10T18:26:44.256Z",
+    "sync_error": null
   },
   {
     "trip_uuid": "a1b2c3d4-e002",
-    "passenger_vat": "V-23456789",
+    "passenger_vat": "V-22222222",
     "driver_vat": "V-98765432",
     "distance_km": 12.1,
     "fare": 22,
@@ -60,9 +60,9 @@
         "lng": -66.822
       }
     ],
-    "odoo_id": null,
-    "odoo_reference": null,
-    "synced_at": null,
-    "sync_error": "No se encontró ningún contacto con el RIF/Cédula 'V-23456789' para el campo 'passenger_vat'."
+    "odoo_id": 60,
+    "odoo_reference": "VJ/2026/00060",
+    "synced_at": "2026-06-10T18:26:44.256Z",
+    "sync_error": null
   }
 ]

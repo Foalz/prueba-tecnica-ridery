@@ -187,6 +187,8 @@ def _validate_trip(env, trip_data):
         if not company.exists():
             return None, f"La compañía con id={company_id} no existe"
         vals['company_id'] = company_id
+    else:
+        vals['company_id'] = env['res.company'].sudo().search([], limit=1).id
 
     return vals, None
 

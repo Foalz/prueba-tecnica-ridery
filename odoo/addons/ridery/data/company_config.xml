@@ -11,9 +11,8 @@
             <field name="vat">J-123456789</field>
         </record>
         
-        <!-- Forzar a la Compañía Principal a usar Venezuela y VES -->
+        <!-- Forzar a la Compañía Principal a usar Venezuela -->
         <record id="base.main_company" model="res.company">
-            <field name="currency_id" ref="base.VES"/>
             <field name="country_id" ref="base.ve"/>
         </record>
 

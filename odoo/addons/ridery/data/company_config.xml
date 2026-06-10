@@ -6,11 +6,15 @@
             <field name="active" eval="True"/>
         </record>
         
+        <!-- Asignar RIF al contacto de la compañía para pasar la validación -->
+        <record id="base.main_partner" model="res.partner">
+            <field name="vat">J-12345678-9</field>
+        </record>
+        
         <!-- Forzar a la Compañía Principal a usar Venezuela y VES -->
         <record id="base.main_company" model="res.company">
             <field name="currency_id" ref="base.VES"/>
             <field name="country_id" ref="base.ve"/>
-            <field name="vat">J-123456789</field>
         </record>
 
         <!-- Crear un diario de ventas básico para que no falle la facturación de prueba -->

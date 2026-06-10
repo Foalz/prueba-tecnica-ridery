@@ -14,7 +14,7 @@
                     <field name="name"/>
                     <field name="partner_id" string="Pasajero"/>
                     <field name="driver_partner_id" string="Conductor"/>
-                    <field name="end_datetime" optional="show"/>
+
                     <field name="distance" sum="Total Distancia"/>
                     <field name="price" sum="Total Ingresos"/>
                     <field name="state" widget="badge"

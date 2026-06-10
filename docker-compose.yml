@@ -29,7 +29,7 @@ services:
       - HOST=db
       - USER=${DB_USER}
       - PASSWORD=${DB_PASSWORD}
-    command: odoo -d ${DB_NAME} -i base --without-demo=all
+    command: odoo -d ${DB_NAME} --without-demo=all
     networks:
       - ridery_net
     restart: unless-stopped

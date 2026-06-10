@@ -6,6 +6,8 @@
             <field name="model">res.partner</field>
             <field name="inherit_id" ref="base.view_partner_form"/>
             <field name="arch" type="xml">
+
+                <!-- Stat buttons -->
                 <div name="button_box" position="inside">
                     <button class="oe_stat_button"
                             type="object"
@@ -23,6 +25,16 @@
                         <field string="Carreras" name="trip_driver_count" widget="statinfo"/>
                     </button>
                 </div>
+
+                <!-- Campo Rol Ridery: justo debajo del nombre del contacto -->
+                <field name="name" position="after">
+                    <field name="ridery_role"
+                           widget="badge"
+                           decoration-info="ridery_role == 'passenger'"
+                           decoration-success="ridery_role == 'driver'"
+                           decoration-muted="ridery_role == 'na'"/>
+                </field>
+
             </field>
         </record>
     </data>

@@ -1,21 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
+
+        <!-- ═══════════════════════ TREE ═══════════════════════════════════════ -->
         <record id="view_rideryy_trips_tree" model="ir.ui.view">
             <field name="name">ridery.trips.tree</field>
             <field name="model">ridery.trips</field>
             <field name="arch" type="xml">
-                <tree string="Viajes" decoration-info="state == 'draft'" decoration-success="state == 'in_progress'" decoration-muted="state == 'cancelled'">
+                <tree string="Viajes"
+                      decoration-info="state == 'draft'"
+                      decoration-success="state == 'in_progress'"
+                      decoration-muted="state == 'cancelled'">
                     <field name="name"/>
-                    <field name="partner_id"/>
-                    <field name="driver_id"/>
-                    <field name="driver_license_plate"/>
+                    <field name="partner_id" string="Pasajero"/>
+                    <field name="driver_partner_id" string="Conductor"/>
+                    <field name="driver_license_plate" string="Placa"/>
                     <field name="distance" sum="Total Distancia"/>
                     <field name="price" sum="Total Ingresos"/>
-                    <field name="state" widget="badge" 
-                           decoration-info="state == 'draft'" 
-                           decoration-success="state == 'in_progress'" 
-                           decoration-warning="state == 'confirmed'" 
+                    <field name="state" widget="badge"
+                           decoration-info="state == 'draft'"
+                           decoration-success="state == 'in_progress'"
+                           decoration-warning="state == 'confirmed'"
                            decoration-danger="state == 'cancelled'"/>
                     <field name="currency_id" invisible="1"/>
                     <field name="company_id" invisible="1"/>
@@ -23,13 +28,15 @@
             </field>
         </record>
 
+        <!-- ═══════════════════════ FORM ═══════════════════════════════════════ -->
         <record id="view_rideryy_trips_form" model="ir.ui.view">
             <field name="name">ridery.trips.form</field>
             <field name="model">ridery.trips</field>
             <field name="arch" type="xml">
                 <form string="Viaje">
                     <header>
-                        <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,in_progress"/>
+                        <field name="state" widget="statusbar"
+                               statusbar_visible="draft,confirmed,in_progress"/>
                     </header>
                     <sheet>
                         <div class="oe_title">
@@ -38,19 +45,24 @@
                             </h1>
                         </div>
                         <group>
-                            <group string="Detalles del Cliente">
-                                <field name="partner_id"/>
+                            <group string="Detalles del Pasajero">
+                                <field name="partner_id"
+                                       domain="[('ridery_role', '=', 'passenger')]"/>
                                 <field name="distance"/>
                             </group>
-                            <group string="Asignación de Flota">
-                                <field name="vehicle_id"/>
-                                <field name="driver_id"/>
-                                <field name="driver_license_plate"/>
+                            <group string="Asignación de Conductor">
+                                <field name="driver_partner_id"
+                                       domain="[('ridery_role', '=', 'driver')]"/>
+                                <!-- Vehículo derivado automáticamente del conductor -->
+                                <field name="vehicle_id" readonly="1"/>
+                                <field name="driver_license_plate" readonly="1"/>
                             </group>
                         </group>
                         <group>
                             <group string="Facturación">
-                                <field name="price" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                <field name="price" widget="monetary"
+                                       options="{'currency_field': 'currency_id'}"/>
+                                <field name="move_id" readonly="1"/>
                                 <field name="currency_id" invisible="1"/>
                                 <field name="company_id" invisible="1"/>
                             </group>
@@ -65,6 +77,7 @@
             </field>
         </record>
 
+        <!-- ═══════════════════════ KANBAN ═══════════════════════════════════ -->
         <record id="view_ridery_trips_kanban" model="ir.ui.view">
             <field name="name">ridery.trips.kanban</field>
             <field name="model">ridery.trips</field>
@@ -72,7 +85,7 @@
                 <kanban default_group_by="state" class="o_kanban_small_column" sample="1">
                     <field name="name"/>
                     <field name="partner_id"/>
-                    <field name="driver_id"/>
+                    <field name="driver_partner_id"/>
                     <field name="state"/>
                     <field name="price"/>
                     <field name="currency_id"/>
@@ -86,12 +99,13 @@
                                         </strong>
                                     </div>
                                     <span class="badge rounded-pill text-bg-primary">
-                                        <field name="price" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                        <field name="price" widget="monetary"
+                                               options="{'currency_field': 'currency_id'}"/>
                                     </span>
                                 </div>
                                 <div class="o_kanban_record_body">
-                                    <span><strong>Cliente: </strong> <field name="partner_id"/></span><br/>
-                                    <span><strong>Chofer: </strong> <field name="driver_id"/></span>
+                                    <span><strong>Pasajero: </strong><field name="partner_id"/></span><br/>
+                                    <span><strong>Conductor: </strong><field name="driver_partner_id"/></span>
                                 </div>
                             </div>
                         </t>
@@ -100,29 +114,40 @@
             </field>
         </record>
 
+        <!-- ═══════════════════════ SEARCH ═══════════════════════════════════ -->
         <record id="view_ridery_trips_search" model="ir.ui.view">
             <field name="name">ridery.trips.search</field>
             <field name="model">ridery.trips</field>
             <field name="arch" type="xml">
                 <search string="Buscar Viajes">
                     <field name="name" string="Referencia"/>
-                    <field name="partner_id" string="Cliente"/>
-                    <field name="driver_id" string="Conductor"/>
-                    
-                    <filter string="Mis Viajes" name="my_trips" domain="[('create_uid', '=', uid)]"/>
+                    <field name="partner_id" string="Pasajero"/>
+                    <field name="driver_partner_id" string="Conductor"/>
+                    <field name="driver_license_plate" string="Placa"/>
+
+                    <filter string="Mis Viajes" name="my_trips"
+                            domain="[('create_uid', '=', uid)]"/>
                     <separator/>
-                    <filter string="En Progreso" name="in_progress" domain="[('state', '=', 'in_progress')]"/>
-                    <filter string="Finalizados" name="done" domain="[('state', '=', 'done')]"/>
-                    
+                    <filter string="En Progreso" name="in_progress"
+                            domain="[('state', '=', 'in_progress')]"/>
+                    <filter string="Confirmados" name="confirmed"
+                            domain="[('state', '=', 'confirmed')]"/>
+                    <filter string="Cancelados" name="cancelled"
+                            domain="[('state', '=', 'cancelled')]"/>
+
                     <group expand="0" string="Agrupar Por">
-                        <filter string="Estado" name="group_by_state" context="{'group_by': 'state'}"/>
-                        <filter string="Conductor" name="group_by_driver" context="{'group_by': 'driver_id'}"/>
-                        <filter string="Cliente" name="group_by_customer" context="{'group_by': 'partner_id'}"/>
+                        <filter string="Estado" name="group_by_state"
+                                context="{'group_by': 'state'}"/>
+                        <filter string="Conductor" name="group_by_driver"
+                                context="{'group_by': 'driver_partner_id'}"/>
+                        <filter string="Pasajero" name="group_by_customer"
+                                context="{'group_by': 'partner_id'}"/>
                     </group>
                 </search>
-            </field>    
+            </field>
         </record>
 
+        <!-- ═══════════════════════ ACTION ═══════════════════════════════════ -->
         <record id="action_ridery_trips" model="ir.actions.act_window">
             <field name="name">Gestión de Viajes</field>
             <field name="res_model">ridery.trips</field>
@@ -135,20 +160,20 @@
             </field>
         </record>
 
-        <!-- Vista Graph para Reportes -->
+        <!-- ═══════════════════════ GRAPH ════════════════════════════════════ -->
         <record id="view_ridery_trips_graph" model="ir.ui.view">
             <field name="name">ridery.trips.graph</field>
             <field name="model">ridery.trips</field>
             <field name="arch" type="xml">
                 <graph string="Análisis de Viajes" type="bar" sample="1">
-                    <field name="driver_id" type="row"/>
+                    <field name="driver_partner_id" type="row"/>
                     <field name="price" type="measure"/>
                     <field name="distance" type="measure"/>
                 </graph>
             </field>
         </record>
 
-        <!-- Acción de Reportes -->
+        <!-- ═══════════════════════ REPORT ACTION ════════════════════════════ -->
         <record id="action_ridery_trips_report" model="ir.actions.act_window">
             <field name="name">Análisis de Viajes</field>
             <field name="res_model">ridery.trips</field>

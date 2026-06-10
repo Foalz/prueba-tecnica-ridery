@@ -5,6 +5,20 @@ from odoo import models, fields, api
 class ResPartner(models.Model):
     _inherit = 'res.partner'
 
+    ridery_role = fields.Selection(
+        selection=[
+            ('passenger', 'Pasajero'),
+            ('driver', 'Conductor'),
+            ('na', 'No Aplica'),
+        ],
+        string='Rol Ridery',
+        required=True,
+        default='na',
+        tracking=True,
+        index=True,
+        help="Define el rol de este contacto en la plataforma Ridery.",
+    )
+
     trip_passenger_count = fields.Integer(
         string='Viajes como Pasajero',
         compute='_compute_trip_counts',
@@ -21,7 +35,7 @@ class ResPartner(models.Model):
                 ('partner_id', '=', partner.id),
             ])
             partner.trip_driver_count = self.env['ridery.trips'].search_count([
-                ('driver_id', '=', partner.id),
+                ('driver_partner_id', '=', partner.id),
             ])
 
     def action_view_trips_as_passenger(self):
@@ -42,6 +56,6 @@ class ResPartner(models.Model):
             'name': 'Viajes como Conductor',
             'view_mode': 'tree,form',
             'res_model': 'ridery.trips',
-            'domain': [('driver_id', '=', self.id)],
+            'domain': [('driver_partner_id', '=', self.id)],
             'context': {'create': False},
         }

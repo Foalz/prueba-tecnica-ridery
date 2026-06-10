@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--
+        Parámetros de configuración para la API de Ridery.
+        Se pueden editar desde: Ajustes → Técnico → Parámetros → Parámetros del sistema
+
+        ridery.api_key       → Clave de autenticación (header X-API-Key)
+        ridery.allowed_origin → URL de origen CORS permitida
+    -->
+    <data noupdate="1">
+
+        <record id="ridery_param_api_key" model="ir.config_parameter">
+            <field name="key">ridery.api_key</field>
+            <!-- Cambiar este valor por uno seguro en producción -->
+            <field name="value">RIDERY-CHANGE-ME-IN-PRODUCTION</field>
+        </record>
+
+        <record id="ridery_param_allowed_origin" model="ir.config_parameter">
+            <field name="key">ridery.allowed_origin</field>
+            <field name="value">http://localhost:3000</field>
+        </record>
+
+    </data>
+</odoo>

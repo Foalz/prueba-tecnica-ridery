@@ -175,6 +175,16 @@ class RideryTrips(models.Model):
             journal = self.env['account.journal'].search([('type', '=', 'sale'), ('company_id', '=', trip.company_id.id)], limit=1)
             if not journal:
                 raise ValidationError(_("No hay ningún diario de ventas configurado en la compañía."))
+            
+            # Buscamos o creamos una cuenta de ingresos
+            account = self.env['account.account'].search([('account_type', '=', 'income'), ('company_id', '=', trip.company_id.id)], limit=1)
+            if not account:
+                account = self.env['account.account'].create({
+                    'name': 'Ingresos por Servicios de Transporte',
+                    'code': '400000',
+                    'account_type': 'income',
+                    'company_id': trip.company_id.id,
+                })
 
             # 2. Crear la factura (account.move)
             move_vals = {
@@ -189,6 +199,7 @@ class RideryTrips(models.Model):
                     'name': f'Servicio de Transporte Ridery - {trip.fleet_category_id.name or "Estándar"}',
                     'quantity': 1.0,
                     'price_unit': trip.price,
+                    'account_id': account.id,
                 })],
             }
             

@@ -28,7 +28,7 @@ class RideryTrips(models.Model):
         related='vehicle_id.driver_id',
         string='Driver'
     )
-    driver_license_plate = fields.Many2one(
+    driver_license_plate = fields.Char(
         string='Driver license plate',
         related='vehicle_id.license_plate',
         index=True
@@ -51,5 +51,5 @@ class RideryTrips(models.Model):
     )
     price = fields.Monetary(
         string='Total',
-        currency_field='currency_id',
+        currency_field='company_id.currency_id',
     )

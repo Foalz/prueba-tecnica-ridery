@@ -6,7 +6,7 @@ class RideryTrips(models.Model):
     _name = 'rider.trips'
     _description = 'Modelo dedicado a almacenar todos los viajes de la aplicacion'
     _inherit = [
-        'mail.activity',
+        'mail.thread',
         'mail.activity.mixin',
     ]
 

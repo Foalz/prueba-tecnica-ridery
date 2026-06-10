@@ -8,15 +8,22 @@ class ResPartner(models.Model):
     is_ridery_driver = fields.Boolean(
         string='Es Conductor',
         compute='_compute_is_ridery_driver',
+        search='_search_is_ridery_driver',
         store=False,
     )
 
     def _compute_is_ridery_driver(self):
         for partner in self:
-            # Es conductor si tiene al menos un vehículo asignado
             partner.is_ridery_driver = bool(
                 self.env['fleet.vehicle'].search_count([('driver_id', '=', partner.id)])
             )
+
+    def _search_is_ridery_driver(self, operator, value):
+        vehicles = self.env['fleet.vehicle'].search([('driver_id', '!=', False)])
+        driver_ids = vehicles.mapped('driver_id.id')
+        if (operator == '=' and value) or (operator == '!=' and not value):
+            return [('id', 'in', driver_ids)]
+        return [('id', 'not in', driver_ids)]
 
     trip_passenger_count = fields.Integer(
         string='Viajes como Pasajero',

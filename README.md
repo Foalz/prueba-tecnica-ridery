@@ -48,8 +48,7 @@ El proyecto está configurado para levantarse con un solo comando. Sigue estos p
 2. Abre la aplicación **Ridery Trips** en el menú principal.
 3. Podrás ver el listado de viajes registrados, con su conductor, pasajero, facturación. Todo esto en una vista Kanban.
    ![Viajes registrados](assets/ridery_module.png)
-4. Desde la vista form se pueden visualizar mayor lujo de detalles, sin embargo, no se pueden editar los datos, ya que la idea es que los datos provengan desde la API.
-   ![Viajes registrados](assets/ridery_module_detail.png)
+4. Desde la vista form se pueden visualizar mayor lujo de detalles y editar los viajes que no hayan sido finalizados.
 **Nota importante:** Existe un cron en Odoo que se ejecuta cada 5 minutos para facturar todos los viajes pendientes, aunque se encuentra disponible la opción de facturar manualmente a través del botón solicitado.
 ---
 

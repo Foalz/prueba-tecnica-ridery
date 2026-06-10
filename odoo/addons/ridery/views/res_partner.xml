@@ -26,14 +26,10 @@
                     </button>
                 </div>
 
-                <!-- Campo Rol Ridery: justo debajo del nombre del contacto -->
-                <field name="name" position="after">
-                    <field name="ridery_role"
-                           widget="badge"
-                           decoration-info="ridery_role == 'passenger'"
-                           decoration-success="ridery_role == 'driver'"
-                           decoration-muted="ridery_role == 'na'"/>
-                </field>
+                <!-- Campo Rol Ridery: justo debajo del RIF/Cédula -->
+                <xpath expr="//field[@name='vat']" position="after">
+                    <field name="ridery_role"/>
+                </xpath>
 
             </field>
         </record>

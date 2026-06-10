@@ -33,9 +33,9 @@
         "lng": -66.857
       }
     ],
-    "odoo_id": 59,
-    "odoo_reference": "VJ/2026/00059",
-    "synced_at": "2026-06-10T18:26:44.256Z",
+    "odoo_id": null,
+    "odoo_reference": null,
+    "synced_at": null,
     "sync_error": null
   },
   {
@@ -60,9 +60,9 @@
         "lng": -66.822
       }
     ],
-    "odoo_id": 60,
-    "odoo_reference": "VJ/2026/00060",
-    "synced_at": "2026-06-10T18:26:44.256Z",
+    "odoo_id": null,
+    "odoo_reference": null,
+    "synced_at": null,
     "sync_error": null
   }
 ]

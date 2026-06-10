@@ -79,11 +79,11 @@ class RideryTrips(models.Model):
         string='Ciudad',
         help="Ciudad donde se realizó el viaje",
     )
-    start_address = fields.Char(
-        string='Dirección de Inicio',
-    )
-    end_address = fields.Char(
-        string='Dirección Fin',
+    stop_ids = fields.One2many(
+        comodel_name='ridery.trip.stop',
+        inverse_name='trip_id',
+        string='Paradas',
+        help='Listado de paradas del viaje (Inicio, Intermedias, Fin)',
     )
     distance = fields.Float(
         string='Distancia (km)',

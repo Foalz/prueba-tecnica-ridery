@@ -47,8 +47,6 @@
                         </div>
                         <group>
                             <group string="Detalles del Viaje">
-                                <field name="start_address"/>
-                                <field name="end_address"/>
                                 <field name="city"/>
                                 <field name="distance"/>
                                 <field name="price"/>
@@ -63,6 +61,19 @@
                                 <field name="fleet_category_id" invisible="1"/>
                             </group>
                         </group>
+                        <notebook>
+                            <page string="Paradas">
+                                <field name="stop_ids">
+                                    <tree editable="bottom">
+                                        <field name="sequence" widget="handle"/>
+                                        <field name="stop_type"/>
+                                        <field name="name"/>
+                                        <field name="latitude" optional="show"/>
+                                        <field name="longitude" optional="show"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
                         <div class="oe_chatter">
                             <field name="message_follower_ids" widget="mail_followers"/>
                             <field name="activity_ids" widget="mail_activity"/>

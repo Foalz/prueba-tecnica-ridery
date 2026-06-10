@@ -11,10 +11,6 @@ const server = app.listen(env.PORT, () => {
   });
 });
 
-// ── Graceful Shutdown ─────────────────────────────────────────────────────────
-// Esto es importante para entornos Docker/Kubernetes, permite que el servidor
-// termine las peticiones en curso antes de apagarse.
-
 function gracefulShutdown(signal: string) {
   logger.info(`${signal} recibido — cerrando servidor ordenadamente...`);
   server.close(() => {
@@ -24,4 +20,4 @@ function gracefulShutdown(signal: string) {
 }
 
 process.on('SIGTERM', () => gracefulShutdown('SIGTERM'));
-process.on('SIGINT',  () => gracefulShutdown('SIGINT'));
+process.on('SIGINT', () => gracefulShutdown('SIGINT'));

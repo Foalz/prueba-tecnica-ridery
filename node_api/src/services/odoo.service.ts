@@ -4,30 +4,24 @@ import { RawTrip, OdooTrip, OdooTripState, OdooApiResponse, SyncResult } from '.
 import { readTrips, writeTrips } from '../utils/fileManager';
 import { logOdooCall } from '../utils/logger';
 
-// ── Mapeo de estados ──────────────────────────────────────────────────────────
-
 const STATUS_MAP: Record<string, OdooTripState> = {
-  pending:     'draft',
-  confirmed:   'confirmed',
-  in_route:    'in_progress',
+  pending: 'draft',
+  confirmed: 'confirmed',
+  in_route: 'in_progress',
   in_progress: 'in_progress',
-  cancelled:   'cancelled',
+  cancelled: 'cancelled',
 };
-
-// ── Transformación ────────────────────────────────────────────────────────────
 
 function toOdooPayload(trip: RawTrip): OdooTrip {
   return {
     passenger_vat: trip.passenger_vat,
-    driver_vat:    trip.driver_vat,
-    distance:      trip.distance_km,
-    price:         trip.fare,
-    state:         STATUS_MAP[trip.status] ?? 'in_progress',
-    stops:         trip.stops,
+    driver_vat: trip.driver_vat,
+    distance: trip.distance_km,
+    price: trip.fare,
+    state: STATUS_MAP[trip.status] ?? 'in_progress',
+    stops: trip.stops,
   };
 }
-
-// ── Servicio principal ────────────────────────────────────────────────────────
 
 export async function syncTripsToOdoo(): Promise<SyncResult> {
   const allTrips = await readTrips();
@@ -47,7 +41,6 @@ export async function syncTripsToOdoo(): Promise<SyncResult> {
     return { total: allTrips.length, pending: 0, created: 0, failed: 0, errors: [] };
   }
 
-  // ── Llamada a Odoo ────────────────────────────────────────────────────────
   let odooResponse: OdooApiResponse;
   let httpStatus: number;
 
@@ -58,15 +51,15 @@ export async function syncTripsToOdoo(): Promise<SyncResult> {
       {
         headers: {
           'Content-Type': 'application/json',
-          'Origin':        env.ODOO_ORIGIN,
-          'X-API-Key':     env.ODOO_API_KEY,
+          'Origin': env.ODOO_ORIGIN,
+          'X-API-Key': env.ODOO_API_KEY,
         },
         validateStatus: (s) => s < 500,
         timeout: 30_000,
       },
     );
     odooResponse = res.data;
-    httpStatus   = res.status;
+    httpStatus = res.status;
   } catch (err) {
     const message = isAxiosError(err)
       ? `Error de red: ${err.message}`
@@ -98,10 +91,10 @@ export async function syncTripsToOdoo(): Promise<SyncResult> {
       syncErrors.push({ trip_uuid: pending[i].trip_uuid, message: allTrips[idx].sync_error! });
     } else {
       const created = odooResponse.trips[createdCursor++];
-      allTrips[idx].odoo_id        = created.id;
+      allTrips[idx].odoo_id = created.id;
       allTrips[idx].odoo_reference = created.name;
-      allTrips[idx].synced_at      = now;
-      allTrips[idx].sync_error     = null;
+      allTrips[idx].synced_at = now;
+      allTrips[idx].sync_error = null;
     }
   }
 
@@ -110,24 +103,24 @@ export async function syncTripsToOdoo(): Promise<SyncResult> {
   // ── Log de evidencia ──────────────────────────────────────────────────────
   const statusLabel =
     odooResponse.status === 'ok' ? 'success' :
-    odooResponse.status === 'partial' ? 'partial' : 'error';
+      odooResponse.status === 'partial' ? 'partial' : 'error';
 
   logOdooCall({
-    status:     statusLabel,
-    endpoint:   ODOO_ENDPOINT,
-    message:    `${odooResponse.created} creados, ${odooResponse.errors.length} con error de ${pending.length} enviados`,
+    status: statusLabel,
+    endpoint: ODOO_ENDPOINT,
+    message: `${odooResponse.created} creados, ${odooResponse.errors.length} con error de ${pending.length} enviados`,
     httpStatus,
-    received:   odooResponse.received,
-    created:    odooResponse.created,
-    failed:     odooResponse.errors.length,
-    errors:     syncErrors,
+    received: odooResponse.received,
+    created: odooResponse.created,
+    failed: odooResponse.errors.length,
+    errors: syncErrors,
   });
 
   return {
-    total:   allTrips.length,
+    total: allTrips.length,
     pending: pending.length,
     created: odooResponse.created,
-    failed:  odooResponse.errors.length,
-    errors:  syncErrors,
+    failed: odooResponse.errors.length,
+    errors: syncErrors,
   };
 }

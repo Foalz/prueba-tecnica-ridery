@@ -11,7 +11,8 @@
     'author': 'Pedro Contreras',
     'depends': [
         'base',
-        'fleet', 
+        'fleet',
+        'contacts',
         'account',
         'l10n_ve',
         'l10n_ve_custom'

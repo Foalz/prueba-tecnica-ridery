@@ -143,6 +143,14 @@ class RideryTrips(models.Model):
                     % trip.partner_id.name
                 )
 
+    @api.constrains('distance', 'price')
+    def _check_positive_distance_price(self):
+        for trip in self:
+            if trip.distance <= 0:
+                raise ValidationError(_("La distancia recorrida (km) debe ser mayor a 0."))
+            if trip.price <= 0:
+                raise ValidationError(_("El precio de la carrera debe ser mayor a 0."))
+
     # ── Secuencia ─────────────────────────────────────────────────────────────
 
     @api.model_create_multi

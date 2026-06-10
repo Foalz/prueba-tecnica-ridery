@@ -1,5 +1,5 @@
 {
-    'name': 'Booking Management (Core)',
+    'name': 'Viajes Ridery',
     'version': '16.0.0.0.0',
     'category': 'Operations/Transportation',
     'summary': 'Módulo principal para la gestión de conductores y reservas de viajes.',
@@ -9,8 +9,18 @@
         - Gestión del modelo de Reservas (Bookings).
     """,
     'author': 'Pedro Contreras',
-    'depends': ['base', 'fleet'],
-    'data': [],
+    'depends': [
+        'base',
+        'fleet', 
+        'account'
+    ],
+    'data': [
+        'security/res_groups.xml',
+        'security/ir.model.access.csv',
+        
+        'views/ridery_trips.xml',
+        'views/menu.xml',
+    ],
     'installable': True,
     'application': True,
     'license': 'LGPL-3',
